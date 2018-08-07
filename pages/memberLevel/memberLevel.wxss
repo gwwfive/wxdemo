@@ -1,0 +1,52 @@
+/* pages/memberLevel/memberLevel.wxss */
+page{
+  background: #eee;
+}
+.level{
+  /* background: #ff0036; */
+  color: #fff;
+  height: 300rpx;
+  text-align: center;
+  /* line-height: 300rpx; */
+}
+.table{
+  display: flex;
+  text-align: center;
+  border-top: 1rpx solid #eee;
+  border-left: 1rpx solid #eee;
+  flex-wrap: wrap;
+}
+.table .td{
+  height: 60rpx;
+  line-height: 60rpx;
+  width: 49%;
+  border-right: 1rpx solid #eee;
+  border-bottom: 1rpx solid #eee;
+}
+.jindu{
+  margin-top: 30rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.jindu label{
+  font-size: 20rpx;margin: 0rpx 10rpx;
+}
+.progress{
+  position: relative;
+  height: 18rpx;
+  width:200rpx;
+  background: #fff;
+  border-radius: 10rpx;
+}
+.progress-bar{
+  background: orange;
+  height: 14rpx;
+  /* width: 100rpx; */
+  position: absolute;
+  top: 2rpx;
+  left: 2rpx;
+  border-radius: 7rpx;
+  animation: growth 500ms ease 0ms forwards;
+  /* transition: width 500ms ease 0ms; */
+}

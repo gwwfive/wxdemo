@@ -1,0 +1,19 @@
+<!--pages/goodCollection/goodCollection.wxml-->
+<block wx:if="{{list.length>0&&dataReady}}">
+  <block wx:for='{{list}}' wx:key="item">
+    <view class='card' data-index="{{index}}" bindtap='gotoProduct'>
+      <image src='{{item.product__imgUrl}}' mode='aspectFill'></image>
+      <view class='detail'>
+        <view>{{item.product__category__label}} {{item.product__productName}}</view>
+        <view>￥{{item.product__originPrice}}</view>
+      </view>
+      <view class='mask' wx:if="{{item.product__status!=1}}" catchlongtap='deleteCollect' data-index="{{index}}"><view style='width:100%;'>商品已下架</view></view>
+    </view>
+  </block>
+</block>
+<block wx:if="{{list.length==0&&dataReady}}">
+  <view class='nocollect'>
+    <view>还没有收藏商品</view>
+    <button type='primary' plain='true' style='background:#fff;' bindtap='goToIndex'>去收藏</button>
+  </view>
+</block>

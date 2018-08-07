@@ -1,0 +1,21 @@
+/* pages/cashRecord/cashRecord.wxss */
+page{
+  background: #eee;
+}
+.noCashRecord{
+  margin-top: 300rpx;
+  text-align: center;
+}
+.cashrecord{
+  display: flex;
+  align-items: center;
+  padding: 20rpx;
+  margin-top: 20rpx;
+  background: #fff;
+  margin: 10rpx;
+  border-radius: 10rpx;
+}
+.value{
+  margin-right: 0rpx;
+  margin-left: auto;
+}

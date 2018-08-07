@@ -1,0 +1,16 @@
+<!--component/notificationScrollbar/notificationScrollbar.wxml-->
+<swiper class="swiper_container" vertical="true" autoplay="true" circular="true" interval="3000">
+  <block wx:for="{{msgList}}" wx:key="msgList">
+    <!-- <navigator url="/pages/index/index?title={{item.url}}" open-type="navigate">
+      <swiper-item>
+        <view class="swiper_item">{{item.value}}</view>
+      </swiper-item>
+    </navigator> -->
+    <view bindtap='_showMsg' id='{{index}}'>
+      <swiper-item>
+        <view style='padding-left:15px;' class="swiper_item">{{item.value}}</view>
+      </swiper-item>
+    </view>
+  </block>
+</swiper>
+

@@ -1,0 +1,25 @@
+/* pages/course/course.wxss */
+@import '/pages/index/index.wxss';
+.course-num{
+  font-size:12pt;
+  font-weight: bold;
+  margin-left:15px;
+  font-family: '微软雅黑';
+  margin-top: 15px;
+}
+
+.page, 
+.page__bd, 
+.weui-tab__content {
+	height: 100%;
+	padding-bottom: 0;
+}
+.weui-navbar__item.weui-bar__item_on {
+  color:#028bf3;
+  font-weight: bold;
+}
+
+.weui-navbar__slider{
+  background-color:#028bf3;
+
+}

@@ -1,0 +1,26 @@
+<view class="appointment">
+  <view class="app-title">推荐购买</view>
+
+  <view class="app-moduler">
+    <block wx:for="{{recommentList}}" wx:key='item'>
+      <navigator url="/pages/productDetail/productDetail?id={{item.id}}" class="mod-item">
+        <view class="mod-img">
+          <image src="{{item.imgUrl}}" class="mod-image" mode='aspectFit'></image>
+        </view>
+        <view class='mod-col'>
+          <view class="mod-title">
+            <text>{{item.productName}}</text>
+          </view>
+          <view class='mod-price'>￥{{item.price}}
+            <p class='mod-originprice'>￥{{item.originPrice}}</p>
+          </view>
+          <view class="mod-info">
+            <view class="moinfont">已售{{item.saleNum}}件</view>
+            <!-- <button class='mod-buy' size='mini'>购买课程</button> -->
+            <!-- <view class='mod-buy'></view> -->
+          </view>
+        </view>
+      </navigator>
+    </block>
+  </view>
+</view>

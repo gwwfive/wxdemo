@@ -1,0 +1,337 @@
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-tab">
+      <view class="weui-navbar">
+        <block wx:for="{{tabs}}" wx:key="*this">
+          <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+            <view class="weui-navbar__title">{{item.tab}}({{item.count}})</view>
+          </view>
+        </block>
+        <view class="weui-navbar__slider" style="width:{{sliderWidth}}px;left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+      </view>
+      <view class="weui-tab__panel">
+        <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
+          <block wx:if="{{coupons[0].list.length>0&&coupons[0].dataReady}}">
+            <block wx:for="{{coupons[0].list}}" wx:key="item">
+              <view class="stamp stamp01" wx:if="{{item.coupon__couponType==0}}">
+                <view class='left'></view>
+                <view class="par">
+                  <view style='color:#fff;'>满减券</view>
+                  <p class="sign sub">￥</p>
+                  <span>{{item.coupon__reduceAmount}}</span>
+                  <p class="sign sub">优惠券</p>
+                  <view>订单满{{item.coupon__fullAmount}}元，减{{item.coupon__reduceAmount}}元</view>
+                </view>
+                <view class="copy">
+                  <view>有效期</view>
+                  <block wx:if="{{item.coupon__timeType==0}}">
+                    <view style='font-size:25rpx;'>{{item.coupon__startTime}}</view>
+                    <view style='height:20rpx;line-height:20rpx;'>-</view>
+                    <view style='font-size:25rpx;'>{{item.coupon__endTime}}</view>
+                  </block>
+                  <block wx:elif="{{item.coupon__timeType==1}}">
+                    <view>每周{{item.coupon__perWeekDay}}有效</view>
+                  </block>
+                  <block wx:elif="{{item.coupon__timeType==2}}">
+                    <view>每月{{item.coupon__perMonthDay}}号有效</view>
+                  </block>
+                  <button size='mini' data-index="{{index}}" bindtap='goToUse'>立即使用</button>
+                </view>
+                <view class='right'></view>
+                <view class='i'></view>
+                <!-- <i></i> -->
+              </view>
+              <view class="stamp stamp02" wx:elif="{{item.coupon__couponType==1}}">
+                <view class='left'></view>
+                <view class="par">
+                  <view style='color:#fff;'>立减券</view>
+                  <p class="sign sub">￥</p>
+                  <span>{{item.coupon__onceAmount}}</span>
+                  <p class="sign sub">优惠券</p>
+                  <view>下单立减</view>
+                </view>
+                <view class="copy">
+                  <view>有效期</view>
+                  <block wx:if="{{item.coupon__timeType==0}}">
+                    <view style='font-size:25rpx;'>{{item.coupon__startTime}}</view>
+                    <view style='height:20rpx;line-height:20rpx;'>-</view>
+                    <view style='font-size:25rpx;'>{{item.coupon__endTime}}</view>
+                  </block>
+                  <block wx:elif="{{item.coupon__timeType==1}}">
+                    <view>每周{{item.coupon__perWeekDay}}有效</view>
+                  </block>
+                  <block wx:elif="{{item.coupon__timeType==2}}">
+                    <view>每月{{item.coupon__perMonthDay}}号有效</view>
+                  </block>
+                  <button size='mini' data-index="{{index}}" bindtap='goToUse'>立即使用</button>
+                </view>
+                <view class='right'></view>
+                <view class='i'></view>
+                <!-- <i></i> -->
+              </view>
+              <view class="stamp stamp03" wx:elif="{{item.coupon__couponType==2}}">
+                <view class='left'></view>
+                <view class="par">
+                  <view style='color:#fff;'>折扣券</view>
+                  <span>{{item.coupon__discount}}</span>
+                  <p class="sign sub">折</p>
+                  <p class="sign sub">优惠券</p>
+                  <view style='font-size:25rpx;'>下单享受{{item.coupon__discount}}折,最高减{{item.coupon__disCountUpLimit}}元</view>
+                </view>
+                <view class="copy">
+                  <view>有效期</view>
+                  <block wx:if="{{item.coupon__timeType==0}}">
+                    <view style='font-size:25rpx;'>{{item.coupon__startTime}}</view>
+                    <view style='height:20rpx;line-height:20rpx;'>-</view>
+                    <view style='font-size:25rpx;'>{{item.coupon__endTime}}</view>
+                  </block>
+                  <block wx:elif="{{item.coupon__timeType==1}}">
+                    <view>每周{{item.coupon__perWeekDay}}有效</view>
+                  </block>
+                  <block wx:elif="{{item.coupon__timeType==2}}">
+                    <view>每月{{item.coupon__perMonthDay}}号有效</view>
+                  </block>
+                  <button size='mini' data-index="{{index}}" bindtap='goToUse'>立即使用</button>
+                </view>
+                <view class='right'></view>
+                <view class='i'></view>
+                <!-- <i></i> -->
+              </view>
+              <view class="stamp stamp04" wx:elif="{{item.coupon__couponType==3}}">
+                <view class='left'></view>
+                <view class="par">
+                  <view style='color:#fff;'>商品券</view>
+                  <p class="sign sub">￥</p>
+                  <span>20</span>
+                  <p class="sign sub">优惠券</p>
+                  <view>购买指定商品立减</view>
+                </view>
+                <view class="copy">
+                  <view>有效期</view>
+                  <view>2015-08-13</view>
+                  <view>2016-08-13</view>
+                  <button size='mini'>立即使用</button>
+                </view>
+                <view class='right'></view>
+                <view class='i'></view>
+                <!-- <i></i> -->
+              </view>
+            </block>
+          </block>
+        </view>
+        <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
+          <block wx:if="{{coupons[1].list.length>0&&coupons[1].dataReady}}">
+            <block wx:for="{{coupons[1].list}}" wx:key="item">
+              <view class="stamp stamp01" wx:if="{{item.coupon__couponType==0}}">
+                <view class='left'></view>
+                <view class="par">
+                  <view style='color:#fff;'>满减券</view>
+                  <p class="sign sub">￥</p>
+                  <span>{{item.coupon__reduceAmount}}</span>
+                  <p class="sign sub">优惠券</p>
+                  <view>订单满{{item.coupon__fullAmount}}元，减{{item.coupon__reduceAmount}}元</view>
+                </view>
+                <view class="copy">
+                  <view>有效期</view>
+                  <block wx:if="{{item.coupon__timeType==0}}">
+                    <view style='font-size:25rpx;'>{{item.coupon__startTime}}</view>
+                    <view style='height:20rpx;line-height:20rpx;'>-</view>
+                    <view style='font-size:25rpx;'>{{item.coupon__endTime}}</view>
+                  </block>
+                  <block wx:elif="{{item.coupon__timeType==1}}">
+                    <view>每周{{item.coupon__perWeekDay}}有效</view>
+                  </block>
+                  <block wx:elif="{{item.coupon__timeType==2}}">
+                    <view>每月{{item.coupon__perMonthDay}}号有效</view>
+                  </block>
+                  <button size='mini' data-index="{{index}}" disabled='{{true}}'>已使用</button>
+                </view>
+                <view class='right'></view>
+                <view class='i'></view>
+                <!-- <i></i> -->
+              </view>
+              <view class="stamp stamp02" wx:elif="{{item.coupon__couponType==1}}">
+                <view class='left'></view>
+                <view class="par">
+                  <view style='color:#fff;'>立减券</view>
+                  <p class="sign sub">￥</p>
+                  <span>{{item.coupon__onceAmount}}</span>
+                  <p class="sign sub">优惠券</p>
+                  <view>下单立减</view>
+                </view>
+                <view class="copy">
+                  <view>有效期</view>
+                  <block wx:if="{{item.coupon__timeType==0}}">
+                    <view style='font-size:25rpx;'>{{item.coupon__startTime}}</view>
+                    <view style='height:20rpx;line-height:20rpx;'>-</view>
+                    <view style='font-size:25rpx;'>{{item.coupon__endTime}}</view>
+                  </block>
+                  <block wx:elif="{{item.coupon__timeType==1}}">
+                    <view>每周{{item.coupon__perWeekDay}}有效</view>
+                  </block>
+                  <block wx:elif="{{item.coupon__timeType==2}}">
+                    <view>每月{{item.coupon__perMonthDay}}号有效</view>
+                  </block>
+                  <button size='mini' data-index="{{index}}" disabled='{{true}}'>已使用</button>
+                </view>
+                <view class='right'></view>
+                <!-- <i></i> -->
+              </view>
+              <view class="stamp stamp03" wx:elif="{{item.coupon__couponType==2}}">
+                <view class='left'></view>
+                <view class="par">
+                  <view style='color:#fff;'>折扣券</view>
+                  <span>{{item.coupon__discount}}</span>
+                  <p class="sign sub">折</p>
+                  <p class="sign sub">优惠券</p>
+                  <view style='font-size:25rpx;'>下单享受{{item.coupon__discount}}折,最高减{{item.coupon__disCountUpLimit}}元</view>
+                </view>
+                <view class="copy">
+                  <view>有效期</view>
+                  <block wx:if="{{item.coupon__timeType==0}}">
+                    <view style='font-size:25rpx;'>{{item.coupon__startTime}}</view>
+                    <view style='height:20rpx;line-height:20rpx;'>-</view>
+                    <view style='font-size:25rpx;'>{{item.coupon__endTime}}</view>
+                  </block>
+                  <block wx:elif="{{item.coupon__timeType==1}}">
+                    <view>每周{{item.coupon__perWeekDay}}有效</view>
+                  </block>
+                  <block wx:elif="{{item.coupon__timeType==2}}">
+                    <view>每月{{item.coupon__perMonthDay}}号有效</view>
+                  </block>
+                  <button size='mini' data-index="{{index}}" disabled='{{true}}'>已使用</button>
+                </view>
+                <view class='right'></view>
+                <view class='i'></view>
+                <!-- <i></i> -->
+              </view>
+              <view class="stamp stamp04" wx:elif="{{item.coupon__couponType==3}}">
+                <view class="par">
+                  <view style='color:#fff;'>商品券</view>
+                  <p class="sign sub">￥</p>
+                  <span>20</span>
+                  <p class="sign sub">优惠券</p>
+                  <view>购买指定商品立减</view>
+                </view>
+                <view class="copy">
+                  <view>有效期</view>
+                  <view>2015-08-13</view>
+                  <view>2016-08-13</view>
+                  <button size='mini'>立即使用</button>
+                </view>
+                <!-- <i></i> -->
+              </view>
+            </block>
+          </block>
+        </view>
+        <view class="weui-tab__content" hidden="{{activeIndex != 2}}">
+          <block wx:if="{{coupons[2].list.length>0&&coupons[2].dataReady}}">
+            <block wx:for="{{coupons[2].list}}" wx:key="item">
+              <view class="stamp stamp01" wx:if="{{item.coupon__couponType==0}}">
+                <view class='left'></view>
+                <view class="par">
+                  <view style='color:#fff;'>满减券</view>
+                  <p class="sign sub">￥</p>
+                  <span>{{item.coupon__reduceAmount}}</span>
+                  <p class="sign sub">优惠券</p>
+                  <view>订单满{{item.coupon__fullAmount}}元，减{{item.coupon__reduceAmount}}元</view>
+                </view>
+                <view class="copy">
+                  <view>有效期</view>
+                  <block wx:if="{{item.coupon__timeType==0}}">
+                    <view style='font-size:25rpx;'>{{item.coupon__startTime}}</view>
+                    <view style='height:20rpx;line-height:20rpx;'>-</view>
+                    <view style='font-size:25rpx;'>{{item.coupon__endTime}}</view>
+                  </block>
+                  <block wx:elif="{{item.coupon__timeType==1}}">
+                    <view>每周{{item.coupon__perWeekDay}}有效</view>
+                  </block>
+                  <block wx:elif="{{item.coupon__timeType==2}}">
+                    <view>每月{{item.coupon__perMonthDay}}号有效</view>
+                  </block>
+                  <button size='mini' data-index="{{index}}" disabled='{{true}}'>已过期</button>
+                </view>
+                <view class='right'></view>
+                <view class='i'></view>
+                <!-- <i></i> -->
+              </view>
+              <view class="stamp stamp02" wx:elif="{{item.coupon__couponType==1}}">
+                <view class='left'></view>
+                <view class="par">
+                  <view style='color:#fff;'>立减券</view>
+                  <p class="sign sub">￥</p>
+                  <span>{{item.coupon__onceAmount}}</span>
+                  <p class="sign sub">优惠券</p>
+                  <view>下单立减</view>
+                </view>
+                <view class="copy">
+                  <view>有效期</view>
+                  <block wx:if="{{item.coupon__timeType==0}}">
+                    <view style='font-size:25rpx;'>{{item.coupon__startTime}}</view>
+                    <view style='height:20rpx;line-height:20rpx;'>-</view>
+                    <view style='font-size:25rpx;'>{{item.coupon__endTime}}</view>
+                  </block>
+                  <block wx:elif="{{item.coupon__timeType==1}}">
+                    <view>每周{{item.coupon__perWeekDay}}有效</view>
+                  </block>
+                  <block wx:elif="{{item.coupon__timeType==2}}">
+                    <view>每月{{item.coupon__perMonthDay}}号有效</view>
+                  </block>
+                  <button size='mini' data-index="{{index}}" disabled='{{true}}'>已过期</button>
+                </view>
+                <view class='right'></view>
+                <view class='i'></view>
+                <!-- <i></i> -->
+              </view>
+              <view class="stamp stamp03" wx:elif="{{item.coupon__couponType==2}}">
+                <view class='left'></view>
+                <view class="par">
+                  <view style='color:#fff;'>折扣券</view>
+                  <span>{{item.coupon__discount}}</span>
+                  <p class="sign sub">折</p>
+                  <p class="sign sub">优惠券</p>
+                  <view style='font-size:25rpx;'>下单享受{{item.coupon__discount}}折,最高减{{item.coupon__disCountUpLimit}}元</view>
+                </view>
+                <view class="copy">
+                  <view>有效期</view>
+                  <block wx:if="{{item.coupon__timeType==0}}">
+                    <view style='font-size:25rpx;'>{{item.coupon__startTime}}</view>
+                    <view style='height:20rpx;line-height:20rpx;'>-</view>
+                    <view style='font-size:25rpx;'>{{item.coupon__endTime}}</view>
+                  </block>
+                  <block wx:elif="{{item.coupon__timeType==1}}">
+                    <view>每周{{item.coupon__perWeekDay}}有效</view>
+                  </block>
+                  <block wx:elif="{{item.coupon__timeType==2}}">
+                    <view>每月{{item.coupon__perMonthDay}}号有效</view>
+                  </block>
+                  <button size='mini' data-index="{{index}}" disabled='{{true}}'>已过期</button>
+                </view>
+                <view class='right'></view>
+                <view class='i'></view>
+                <!-- <i></i> -->
+              </view>
+              <view class="stamp stamp04" wx:elif="{{item.coupon__couponType==3}}">
+                <view class="par">
+                  <view style='color:#fff;'>商品券</view>
+                  <p class="sign sub">￥</p>
+                  <span>20</span>
+                  <p class="sign sub">优惠券</p>
+                  <view>购买指定商品立减</view>
+                </view>
+                <view class="copy">
+                  <view>有效期</view>
+                  <view>2015-08-13</view>
+                  <view>2016-08-13</view>
+                  <button size='mini'>立即使用</button>
+                </view>
+                <view class='i'></view>
+                <!-- <i></i> -->
+              </view>
+            </block>
+          </block>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

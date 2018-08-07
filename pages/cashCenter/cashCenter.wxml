@@ -1,0 +1,55 @@
+<block wx:if="{{isAgent&&dataReady}}">
+  <view class='cash-info theme'>
+    <view class='cash-info-total'>总额￥{{agent.total}}
+    </view>
+
+    <view class='cash-info-residue'>
+      <text>余额￥{{agent.residue}}</text>
+      <view style='width:40rpx;'></view>
+      <text>积分{{score}}</text>
+    </view>
+    <view class='cash-info-raise'>
+      <view class='cash-info-raise-item' style='border-right: 1rpx solid #fff;'>
+        <view>￥{{agentCountMonth.total}}</view>
+        <view>本月收益</view>
+      </view>
+      <view class='cash-info-raise-item'>
+        <view>{{agentCountMonth.firstFans+agentCountMonth.secondFans}}粉丝</view>
+        <view>本月新增</view>
+      </view>
+    </view>
+  </view>
+
+  <view class='cash-cells'>
+    <view class="weui-cells weui-cells_after-title">
+      <navigator url="/pages/profit/profit?agentId={{agent.id}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">我的收益</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>
+
+      <navigator url="/pages/fans/fans" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">我的粉丝</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>
+
+      <!-- <navigator url="/pages/footMark/footMark" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+    <view class="weui-cell__bd" style='font-size:16pt;'>我的足迹</view>
+    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+  </navigator> -->
+      <navigator url="/pages/cashRecord/cashRecord?agentId={{agent.id}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">提现记录</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>
+    </view>
+  </view>
+
+  <view class='cash-info-bar'>
+    <button bindtap='goToApplyCash'>我要提现</button>
+  </view>
+</block>
+<block wx:if="{{!isAgent&&dataReady}}">
+<view class='noagent'>
+<view>你还不是代理</view>
+<button type='warn' plain='true' bindtap='goToAgentApply'>我要代言</button>
+</view>
+</block>

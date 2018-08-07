@@ -1,0 +1,92 @@
+<view class="cash-residue theme">
+  <view>￥
+    <label style="font-size:100rpx">
+      {{residue}}</label>
+  </view>
+  <view>可提现余额</view>
+</view>
+
+<view class='cash-cells'>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">提现金额</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" placeholder="请输入提现金额" bindinput='inputCash'/>
+      </view>
+      <view class="weui-cell__ft" wx:if="{{!isCash}}">
+        <icon type="warn" size="23" color="#E64340"></icon>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input ">
+      <view class="weui-cell__hd">
+        <view class="weui-label">微信号</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" placeholder="请输入微信号" bindinput='inputWxCode' />
+      </view>
+      <view class="weui-cell__ft" wx:if="{{!isWxCode}}">
+        <icon type="warn" size="23" color="#E64340"></icon>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input" >
+      <view class="weui-cell__hd">
+        <view class="weui-label">真实姓名</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input maxlength='20' class="weui-input" placeholder="请输入真实姓名" bindinput='inputName'/>
+      </view>
+      <view class="weui-cell__ft" wx:if="{{!isName}}">
+        <icon type="warn" size="23" color="#E64340"></icon>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">手机号码</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" placeholder="请输入手机号码" bindinput='inputPhoneNum'/>
+      </view>
+      <view class="weui-cell__ft" wx:if="{{!isPhoneNum}}">
+        <icon type="warn" size="23" color="#E64340"></icon>
+      </view>
+    </view>
+    <!-- <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">支付宝账号</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" placeholder="请输入支付宝账号（选填）" />
+      </view>
+      <view class="weui-cell__ft">
+        <icon type="warn" size="23" color="#E64340"></icon>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">银行卡名称</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" placeholder="如广州工商银行天河支行" />
+      </view>
+      <view class="weui-cell__ft">
+        <icon type="warn" size="23" color="#E64340"></icon>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">银行卡号</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" placeholder="请输入银行卡号（选填）" />
+      </view>
+      <view class="weui-cell__ft">
+        <icon type="warn" size="23" color="#E64340"></icon>
+      </view>
+    </view> -->
+  </view>
+</view>
+<view class='cash-bar'>
+<button bindtap='submit'>申请提现</button>
+</view>

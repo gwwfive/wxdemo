@@ -1,0 +1,95 @@
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-tab">
+      <view class="weui-navbar">
+        <block wx:for="{{tabs}}" wx:key="*this">
+          <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+            <view class="weui-navbar__title">{{item}}</view>
+          </view>
+        </block>
+        <view class="weui-navbar__slider" style="width:{{sliderWidth}}px;left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+      </view>
+      <view class="weui-tab__panel">
+        <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
+          <view class="profit-hd">收益总额：
+            <label style='color:#ff0036;'>￥{{profit[0].agentProfitCount.total}}</label>
+          </view>
+          <view class='profit-bd'>
+            <block wx:if="{{profit[0].list.length>0&&profit[0].dataReady}}">
+              <block wx:for="{{profit[0].list}}" wx:key="item">
+                <view class='profit-item'>
+                  <!-- <image src='/img/bg.jpg'></image> -->
+                  <view>
+                    <view class='profit-info'>详情：
+                      <p>{{item.even}}</p>
+                    </view>
+                    <view class='profit-time'>时间：{{item.createTime}}</view>
+                  </view>
+                  <view class='profit-detail'>收益：
+                    <label style='color:#ff0036;'>￥{{item.value}}</label>
+                  </view>
+                </view>
+              </block>
+            </block>
+            <block wx:elif="{{profit[0].list.length==0&&profit[0].dataReady}}">
+              <view class='norecord'>没有更多数据</view>
+            </block>
+          </view>
+        </view>
+        <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
+          <view class="profit-hd">收益总额：
+            <label style='color:#ff0036;'>￥{{profit[1].agentProfitCount.total}}</label>
+          </view>
+          <view class='profit-bd'>
+            <block wx:if="{{profit[1].list.length>0&&profit[1].dataReady}}">
+              <block wx:for="{{profit[1].list}}" wx:key="item">
+                <view class='profit-item'>
+                  <!-- <image src='/img/bg.jpg'></image> -->
+                  <view>
+                    <view class='profit-info'>详情：
+                      <p>{{item.even}}</p>
+                    </view>
+                    <view class='profit-time'>时间：{{item.createTime}}</view>
+                  </view>
+                  <view class='profit-detail'>收益：
+                    <label style='color:#ff0036;'>￥{{item.value}}</label>
+                  </view>
+                </view>
+              </block>
+            </block>
+            <block wx:elif="{{profit[1].list.length==0&&profit[1].dataReady}}">
+              <view class='norecord'>没有更多数据</view>
+            </block>
+          </view>
+        </view>
+        <view class="weui-tab__content" hidden="{{activeIndex != 2}}">
+          <view class="profit-hd">收益总额：
+            <label style='color:#ff0036;'>￥{{profit[2].agentProfitCount.total}}</label>
+          </view>
+          <view class='profit-bd'>
+            <block wx:if="{{profit[2].list.length>0&&profit[2].dataReady}}">
+              <block wx:for="{{profit[2].list}}" wx:key="item">
+                <view class='profit-item'>
+                  <!-- <image src='/img/bg.jpg'></image> -->
+                  <view>
+                    <view class='profit-info'>详情：
+                      <p>{{item.even}}</p>
+                    </view>
+                    <view class='profit-time'>时间：{{item.createTime}}</view>
+                  </view>
+                  <view class='profit-detail'>收益：
+                    <label style='color:#ff0036;'>￥{{item.value}}</label>
+                  </view>
+                </view>
+              </block>
+            </block>
+            <block wx:elif="{{profit[2].list.length==0&&profit[2].dataReady}}">
+              <view class='norecord'>没有更多数据</view>
+            </block>
+          </view>
+        </view>
+
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,141 @@
+/* component/tripList/tripList.wxss */
+@import "/utils/weui.wxss";
+
+.card {
+  width: 94%;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  overflow: hidden;
+  margin: 20px 3%;
+  border-radius: 10rpx;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+.userInfo {
+  width: 100%;
+}
+.stamp {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  top: 0px;
+  /* left: 0px;
+  bottom:0px; */
+  right: 0px;
+  /* margin: auto; */
+}
+.trip_image .image {
+  height: 380rpx;
+  width: 100%;
+   border-top-left-radius: 10rpx;
+  border-top-right-radius: 10rpx; 
+}
+.tag_list {
+  padding: 3px;
+}
+.tag {
+  border: 1px solid orange;
+  font-size: 10pt;
+  border-radius: 3px;
+  padding: 1px 4px;
+  margin: 0px 10px;
+}
+.location {
+  font-size: 12pt;
+  color: #369;
+  /* margin: 15px 0px 8px auto; */
+  margin-left: 15px;
+  margin-right: auto;
+}
+.time {
+  font-size: 10pt;
+  color: #028bf3;
+  /* margin: 15px 0px auto 8px; */
+  margin-left: auto;
+  margin-right: 5px;
+}
+.text {
+  margin: 0px 15px 8px 15px;
+  display: block;
+  font-size: 14pt;
+  /* overflow: hidden; *//* white-space: nowrap; *//* text-overflow:ellipsis; */
+}
+button {
+  border: none;
+  color: #028bf3;
+  background: #fff;
+}
+
+/* 自定义弹窗  */
+
+.mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background: #515151;
+  opacity: 0.5;
+  top: 0px;
+  z-index: 998;
+}
+.coolsCar {
+  position: fixed;
+  /* width: 700rpx; *//* height: 500rpx; *//* background-color: #fff; */
+  border-radius: 30rpx;
+  width: 90%;
+  padding: 20rpx;
+  background-color: white;
+  /* position: fixed; */
+  left: 50%;
+  top: 50%;
+  /* 支持现代浏览器 */
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  /* top:0px; 
+  bottom: 0px; 
+  left: 0px;
+  right: 0px;
+  margin: auto; */
+  z-index: 999;
+  /* line-height: 500rpx; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* transform: scale(1.16);
+  transition: all 0.2s ease-in 0s; */
+}
+/*显示两行  */
+.showTwoLine {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+.showOneLine{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+/*首先，要知道css的三条属性。
+
+overflow:hidden; //超出的文本隐藏
+
+text-overflow:ellipsis; //溢出用省略号显示
+
+white-space:nowrap; //溢出不换行
+
+这三个是css的基础属性，需要记得。
+
+但是第三条属性，只能显示一行，不能用在这里，那么如果显示多行呢？
+
+
+
+css3解决了这个问题，解决方法如下：
+
+display:-webkit-box; //将对象作为弹性伸缩盒子模型显示。
+
+-webkit-box-orient:vertical; //从上到下垂直排列子元素（设置伸缩盒子的子元素排列方式）
+
+-webkit-line-clamp:2; //这个属性不是css的规范属性，需要组合上面两个属性，表示显示的行数。  */

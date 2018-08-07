@@ -1,0 +1,241 @@
+page{
+  background: #eee;
+}
+.disable{
+  background: #eee;
+}
+.cart-list{
+  margin-bottom: 120rpx;
+  width: 100%;
+  height: 100%;
+  background: #eee;
+
+}
+.cart-item{
+  height: 250rpx;
+  width: 100%;
+  margin: 10rpx 0rpx;
+  position: relative;
+  animation: in 500ms ease 0ms forwards;
+}
+.cart-item-lower{
+  width: 100%;
+  height: 250rpx;
+  display: flex;
+  flex-direction: row;
+  z-index: 0;
+
+}
+.cart-item-lower-del{
+  width: 150rpx;
+  height: 250rpx;
+  background: red;
+  color: #fff;
+  margin-left: auto;
+  margin-right: 0rpx;
+  text-align: center;
+  line-height: 250rpx;
+}
+.cart-item-upper{
+  height: 250rpx;
+  width: 100%;
+  /* margin: 10rpx 0rpx; */
+  display: flex;
+  flex-direction: row;
+  background: #fff;
+  position: absolute;
+  top: 0rpx;
+  left: 0rpx;
+  bottom: auto;
+  right: auto;
+  z-index: 1;
+}
+.cart-item-upper-slide-left{
+  transform: translateX(-150rpx);
+  transition: all 0.5s ease-in 0ms;
+
+}
+.cart-select{
+  width: 120rpx;
+  height: 250rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cart-select image{
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+}
+.cart-image{
+  width: 250rpx;
+  height: 250rpx;
+  padding: 10rpx;
+}
+.cart-image image{
+  width: 230rpx;
+  height: 230rpx;
+}
+.cart-bar{
+  width: 380rpx;
+  height: 250rpx;
+  display: flex;
+  flex-direction: column;
+}
+.cart-title{
+  width: 380rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 50rpx;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.cart-title-detail{
+  width: 380rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  font-size: 35rpx;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  color: #999;
+}
+.cart-price{
+  width: 380rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  font-size: 50rpx;
+  color: red
+}
+.cart-originprice{
+  font-size: 25rpx;
+  color: #999;
+  text-decoration: line-through;
+}
+.cart-count{
+  margin-left: auto;
+  margin-right: 15rpx;
+  height: 60rpx;
+  width: 180rpx;
+  font-size: 24rpx;
+  display: block;
+  border:1rpx solid #999; 
+  border-radius: 4rpx;
+}
+.cart-count-minus{
+  display: inline-block;
+  width: 59rpx;
+  height: 60rpx;
+  text-align: center;
+  line-height: 60rpx;
+  border-right: 1rpx solid #999;
+  /* border-radius: 4rpx 0rpx 0rpx 4rpx; */
+  }
+  .cart-count-minus:active{
+    background: #e6e6e6;
+  }
+  .cart-count-input{
+    width: 60rpx;
+    height: 62rpx;
+    text-align: center;
+    vertical-align: middle;
+    display: inline-block;
+    /* border-left: 1rpx solid #999;
+    border-right: 1rpx solid #999; */
+  }
+  .cart-count-plus{
+    border-left: 1rpx solid #999;
+    width: 59rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    display: inline-block;
+    text-align: center;
+  }
+  .cart-count-plus:active{
+    background: #e6e6e6;
+  }
+
+
+.account-bar{
+  height: 120rpx;
+  width: 100%;
+  position: fixed;
+  bottom: 0rpx;
+  top: auto;
+  left: 0rpx;
+  z-index: 99;
+  display: flex;
+  flex-direction: row;
+  /* border-top: 1rpx solid #515151; */
+  background: #fff;
+  
+}
+.account-select{
+  height: 120rpx;
+  width: 200rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.account-select image{
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+}
+.account-select text{
+ margin-left: 10rpx;
+}
+.account-total{
+  font-size: 40rpx;
+  height: 120rpx;
+  line-height: 120rpx;
+
+}
+.account-total label{
+  color:red;
+}
+.account-btn{
+  width: 230rpx;
+  height: 120rpx;
+  margin-right: 0rpx;
+  margin-left: auto;
+  text-align: center;
+  line-height: 120rpx;
+  /* background: red; */
+  color: #fff;
+}
+@keyframes opactiy{
+  0%{
+    opacity: 0
+  }
+  100%{
+    opacity: 1;
+  }
+}
+.cart-empty{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+ animation: opactiy 0.5s 0ms forwards;
+}
+.cart-empty image{
+  width: 250rpx;
+  height: 250rpx;
+}
+.cart-empty text{
+  font-size: 40rpx;
+  color: #999999;
+}
+.cart-empty button{
+  border:none;
+  background: #999;
+  color: #fff;
+  width: 250rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+}
+

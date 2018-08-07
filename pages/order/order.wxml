@@ -1,0 +1,248 @@
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-tab">
+      <view class="weui-navbar">
+        <block wx:for-items="{{ tabs}}" wx:key="{{ index }}">
+          <view id="{{ index }}" class="weui-navbar__item {{ activeIndex == index ? 'weui-bar__item_on' : '' }}" bindtap="tabClick">
+            <view class="weui-navbar__title">{{ item }}</view>
+          </view>
+        </block>
+        <view class="weui-navbar__slider" style="width:{{sliderWidth}}px;left: {{ sliderLeft }}px; transform: translateX({{ sliderOffset }}px); -webkit-transform: translateX({{ sliderOffset }}px);"></view>
+      </view>
+      <view class="weui-tab__panel">
+        <view class="weui-tab__content" hidden="{{ activeIndex != 0 }}">
+          <view class='order'>
+            <view class='order-list' wx:if="{{orders[0].list.length>0}}">
+              <scroll-view scroll-y class='order-list'>
+                <view class='order-item' wx:for='{{orders[0].list}}' wx:key='item.id'>
+                  <view class='order-no'>
+                    <view style='margin-left:20rpx;margin-right:auto;'>
+                      订单号:
+                      <label style='color:#000000;font-size:30rpx;'>{{item.order_code}}</label>
+                    </view>
+                    <view wx:if="{{item.status==0}}" style='margin-right:10rpx;margin-left:auto'>
+                      <!-- <p>
+                        <image src='/img/time.png' style='height:25rpx;width:25rpx;'></image>支付剩余 {{item.payResidualHour||24}}时{{item.payResidualMin||"01"}}分</p> -->
+                    </view>
+                  </view>
+                  <view class='order-bar'>
+                    <view style='padding:20rpx 0rpx'>
+                      <view class='order-status'>状态:
+                        <label style='color:{{item.status==4?"#000000":"#ff0036"}}'>{{item.statusDesc}}</label>
+                      </view>
+                      <view class='order-price'>总价:
+                        <label style='color:#000'>￥{{item.realTotal}}</label>
+                      </view>
+                      <view class='order-price'>时间:
+                        <label style='font-size:25rpx;'>{{item.createTime}}</label>
+                      </view>
+                    </view>
+                    <button wx:if="{{item.status==3&&orderType==0}}" bindtap='goToComment' data-index="{{index}}" data-flag="0">去评价</button>
+                    <button wx:if="{{item.status==0}}" type='warn' bindtap='cancelOrder' data-orderid="{{item.id}}" data-index="{{index}}" data-flag="0" data-outtradeno="{{item.out_trade_no}}">{{item.orderType==0?"取消订单":"取消拼团"}}</button>
+                    <button wx:if="{{item.status==0}}" type='warn' bindtap='goToPay' data-orderid="{{item.id}}" data-index="{{index}}" data-flag="0">去支付</button>           
+                    <button wx:elif="{{item.status==2}}" type='warn' bindtap='receiveGoods' data-flag="0" data-index="{{index}}" data-orderid="{{item.id}}">确认收货</button>
+                    <button wx:elif="{{item.status==2||item.status==3||item.status==4||item.status==1||item.status==5}}" type='warn' bindtap='buyAgain' data-id="{{item.id}}">再次购买</button>
+                    <button wx:elif="{{item.status==6}}" type='warn'>取消退款</button>
+                  </view>
+                  <view class='order-product' wx:for="{{item.orderSku}}" wx:for-item="productItem" wx:key='productItem.id'>
+                    <image src='{{productItem.imgUrl}}'></image>
+                    <view class='order-detail'>
+                      <view class='order-product-name'>{{productItem.productName}}</view>
+                      <view class='order-product-skuname'>{{productItem.skuName}}</view>
+                      <view class='order-product-skunum'>×{{productItem.skuNum}}</view>
+                    </view>
+                  </view>
+                </view>
+              </scroll-view>
+
+            </view>
+            <view class='order-empty' wx:if="{{orders[0].list.length==0&&orders[0].dataReady}}">
+              <image src='/img/order_all_empty.png'></image>
+              <text>空空如也</text>
+            </view>
+          </view>
+        </view>
+        <view class="weui-tab__content" hidden="{{ activeIndex != 1 }}">
+          <view class='order'>
+            <view class='order-list' wx:if="{{orders[1].list.length>0}}">
+              <scroll-view scroll-y class='order-list'>
+                <view class='order-item' wx:for='{{orders[1].list}}' wx:key='item.id'>
+                  <view class='order-no'>
+                    <view style='margin-left:20rpx;margin-right:auto;'>
+                      订单号:
+                      <label style='color:#000000;font-size:30rpx;'>{{item.order_code}}</label>
+                    </view>
+                    <view wx:if="{{item.status==0}}" style='margin-right:10rpx;margin-left:auto'>
+                      <p>
+                        <image src='/img/time.png' style='height:25rpx;width:25rpx;'></image>支付剩余 {{item.payResidualHour||24}}时{{item.payResidualMin||"01"}}分</p>
+                    </view>
+                  </view>
+                  <view class='order-bar'>
+                    <view style='padding:20rpx 0rpx'>
+                      <view class='order-status'>状态:
+                        <label style='color:{{item.status==4?"#000000":"#ff0036"}}'>{{item.statusDesc}}</label>
+                      </view>
+                      <view class='order-price'>总价:
+                        <label style='color:#000'>￥{{item.realTotal}}</label>
+                      </view>
+                      <view class='order-price'>时间:
+                        <label style='font-size:25rpx;'>{{item.createTime}}</label>
+                      </view>
+                    </view>
+                    <button wx:if="{{item.status==0}}" type='warn' bindtap='cancelOrder' data-orderid="{{item.id}}" data-index="{{index}}" data-flag="1" data-outtradeno="{{item.out_trade_no}}">{{item.orderType==0?"取消订单":"取消拼团"}}</button>
+                    <button wx:if="{{item.status==0}}" type='warn' bindtap='goToPay' data-orderid="{{item.id}}" data-flag="1" data-index="{{index}}">去支付</button>
+                  </view>
+                  <view class='order-product' wx:for="{{item.orderSku}}" wx:for-item="productItem" wx:key='productItem.id'>
+                    <image src='{{productItem.imgUrl}}'></image>
+                    <view class='order-detail'>
+                      <view class='order-product-name'>{{productItem.productName}}</view>
+                      <view class='order-product-skuname'>{{productItem.skuName}}</view>
+                      <view class='order-product-skunum'>×{{productItem.skuNum}}</view>
+                    </view>
+                  </view>
+                </view>
+              </scroll-view>
+            </view>
+            <view class='order-empty' wx:if="{{orders[1].list.length==0&&orders[1].dataReady}}">
+              <image src='/img/order_prepay_empty.png'></image>
+              <text>还没有订单~</text>
+              <!-- <button size='mini'>去下单</button> -->
+            </view>
+          </view>
+        </view>
+        <view class="weui-tab__content" hidden="{{ activeIndex != 2 }}">
+          <view class='order'>
+            <view class='order-list' wx:if="{{orders[2].list.length>0}}">
+              <scroll-view scroll-y class='order-list'>
+                <view class='order-item' wx:for='{{orders[2].list}}' wx:key='item.id'>
+                  <view class='order-no'>
+                    <view style='margin-left:20rpx;margin-right:auto;'>
+                      订单号:
+                      <label style='color:#000000;font-size:30rpx;'>{{item.order_code}}</label>
+                    </view>
+                    <!-- <view wx:if="{{item.status==0}}" style='margin-right:10rpx;margin-left:auto'>
+                      <p>
+                        <image src='/img/time.png' style='height:25rpx;width:25rpx;'></image>支付剩余 {{item.payResidualHour||24}}时{{item.payResidualMin||"01"}}分</p>
+                    </view> -->
+                  </view>
+                  <view class='order-bar'>
+                    <view style='padding:20rpx 0rpx'>
+                      <view class='order-status'>状态:
+                        <label style='color:{{item.status==4?"#000000":"#ff0036"}}'>{{item.statusDesc}}</label>
+                      </view>
+                      <view class='order-price'>总价:
+                        <label style='color:#000'>￥{{item.realTotal}}</label>
+                      </view>
+                      <view class='order-price'>时间:
+                        <label style='font-size:25rpx;'>{{item.createTime}}</label>
+                      </view>
+                    </view>
+                    <button wx:if="{{item.status==2}}" type='warn' bindtap='receiveGoods' data-flag="0" data-index="{{index}}" data-orderid="{{item.id}}">确认收货</button>
+                    <!-- <button type='warn'>再次购买</button>  -->
+                  </view>
+                  <view class='order-product' wx:for="{{item.orderSku}}" wx:for-item="productItem" wx:key='productItem.id'>
+                    <image src='{{productItem.imgUrl}}'></image>
+                    <view class='order-detail'>
+                      <view class='order-product-name'>{{productItem.productName}}</view>
+                      <view class='order-product-skuname'>{{productItem.skuName}}</view>
+                      <view class='order-product-skunum'>×{{productItem.skuNum}}</view>
+                    </view>
+                  </view>
+                </view>
+              </scroll-view>
+            </view>
+            <view class='order-empty' wx:if="{{orders[2].list.length==0&&orders[2].dataReady}}">
+              <image src='/img/order_received_empty.png'></image>
+              <text>没有数据~</text>
+            </view>
+          </view>
+        </view>
+        <view class="weui-tab__content" hidden="{{ activeIndex != 3 }}">
+          <view class='order'>
+            <view class='order-list' wx:if="{{orders[3].list.length>0}}">
+              <scroll-view scroll-y class='order-list'>
+                <view class='order-item' wx:for='{{orders[3].list}}' wx:key='item.id'>
+                  <view class='order-no'>
+                    <view style='margin-left:20rpx;margin-right:auto;'>
+                      订单号:
+                      <label style='color:#000000;font-size:30rpx;'>{{item.order_code}}</label>
+                    </view>
+                  </view>
+                  <view class='order-bar'>
+                    <view style='padding:20rpx 0rpx'>
+                      <view class='order-status'>状态:
+                        <label style='color:{{item.status==4?"#000000":"#ff0036"}}'>{{item.statusDesc}}</label>
+                      </view>
+                      <view class='order-price'>总价:
+                        <label style='color:#000'>￥{{item.realTotal}}</label>
+                      </view>
+                      <view class='order-price'>时间:
+                        <label style='font-size:25rpx;'>{{item.createTime}}</label>
+                      </view>
+                    </view>
+                    <button bindtap='goToComment' data-index="{{index}}" data-flag="3">去评价</button>
+                    <button type='warn'>再次购买</button>  
+                  </view>
+                  <view class='order-product' wx:for="{{item.orderSku}}" wx:for-item="productItem" wx:key='productItem.id'>
+                    <image src='{{productItem.imgUrl}}'></image>
+                    <view class='order-detail'>
+                      <view class='order-product-name'>{{productItem.productName}}</view>
+                      <view class='order-product-skuname'>{{productItem.skuName}}</view>
+                      <view class='order-product-skunum'>×{{productItem.skuNum}}</view>
+                    </view>
+                  </view>
+                </view>
+              </scroll-view>
+            </view>
+            <view class='order-empty' wx:if="{{orders[3].list.length==0&&orders[3].dataReady}}">
+              <image src='/img/order_comment_empty.png'></image>
+              <text>没有待评价订单</text>
+            </view>
+          </view>
+        </view>
+        <view class="weui-tab__content" hidden="{{ activeIndex != 4 }}">
+          <view class='order'>
+            <view class='order-list' wx:if="{{orders[4].list.length>0}}">
+              <scroll-view scroll-y class='order-list'>
+                <view class='order-item' wx:for='{{orders[4].list}}' wx:key='item.id'>
+                  <view class='order-no'>
+                    <view style='margin-left:20rpx;margin-right:auto;'>
+                      订单号:
+                      <label style='color:#000000;font-size:30rpx;'>{{item.order_code}}</label>
+                    </view>
+                  </view>
+                  <view class='order-bar'>
+                    <view style='padding:20rpx 0rpx'>
+                      <view class='order-status'>状态:
+                        <label style='color:{{item.status==4?"#000000":"#ff0036"}}'>{{item.statusDesc}}</label>
+                      </view>
+                      <view class='order-price'>总价:
+                        <label style='color:#000'>￥{{item.realTotal}}</label>
+                      </view>
+                      <view class='order-price'>时间:
+                        <label style='font-size:25rpx;'>{{item.createTime}}</label>
+                      </view>
+                    </view>
+                    <button type='warn'>再次购买</button>  
+                  </view>
+                  <view class='order-product' wx:for="{{item.orderSku}}" wx:for-item="productItem" wx:key='productItem.id'>
+                    <image src='{{productItem.imgUrl}}'></image>
+                    <view class='order-detail'>
+                      <view class='order-product-name'>{{productItem.productName}}</view>
+                      <view class='order-product-skuname'>{{productItem.skuName}}</view>
+                      <view class='order-product-skunum'>×{{productItem.skuNum}}</view>
+                    </view>
+                  </view>
+                </view>
+              </scroll-view>
+            </view>
+            <view class='order-empty' wx:if="{{orders[4].list.length==0&&orders[4].dataReady}}">
+              <image src='/img/order_comment_empty.png'></image>
+              <text>没有已完成订单</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

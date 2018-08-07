@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "component-listTable": "/component/listTable/listTable"
+  }
+}

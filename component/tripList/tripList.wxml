@@ -1,0 +1,213 @@
+<!--component/tripList/tripList.wxml-->
+<block wx:for="{{ list }}" wx:key="item" wx:if="{{state==0}}">
+  <navigator class='card' url="/pages/trip/trip?id={{item.id}}&flag=0">
+    <!--显示的是盖章  -->
+    <image class='stamp' src='{{trip.state==2?"/img/cancel.png":""}}' wx:if="{{flag==1}}"></image>
+    <!--行程  -->
+    <view class='trip_image'>
+      <view style='width:100%;height:100%;justify-content: center;border-radius:20rpx'>
+        <image src="{{item.imgUrl}}" class="image weui-flex" mode="aspectFill" />
+        <view style='display:flex;width:100%;;'>
+          <view class="location">{{item.address}}
+            <block wx:if="{{item.days!=0}}"> · {{item.days}}天</block>
+          </view>
+          <!-- <view class="time">{{item.startTime}}</view> -->
+        </view>
+        <text class='text'>{{item.title}}</text>
+      </view>
+    </view>
+  </navigator>
+</block>
+<!-- 即将出行  -->
+<block wx:if="{{ state==1 }}">
+  <block wx:for="{{ list }}" wx:key="item">
+    <navigator class='card' url="/pages/trip/trip?id={{item.id}}&flag=1">
+      <!--行程  -->
+      <view class='trip_image'>
+        <view style='width:100%;height:100%;justify-content: center;'>
+          <image src="{{item.imgUrl}}" class="image weui-flex" mode="scaleToFill" mode="aspectFill" />
+          <view style='display:flex;'>
+            <view class="location">{{item.address}}
+              <block wx:if="{{item.days!=0}}"> · {{item.days}}天</block>
+            </view>
+            <!-- <view class='location' style='margin-left:auto;margin-right:10px;'>{{item.createTime}}</view> -->
+          </view>
+        </view>
+      </view>
+    </navigator>
+  </block>
+</block>
+
+<!--通知  -->
+<block wx:if="{{ state==2 }}">
+  <view class="weui-cells weui-cells_after-title">
+    <block wx:for="{{list}}" wx:key="item">
+      <view class="weui-cell" bindtap='hasread' data-index='{{index}}' data-id='{{item.id}}'>
+        <view class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+          <image src="{{item.imgUrl}}" style="width: 50px; height: 50px; display: block" mode="aspectFill" />
+          <view wx:if="{{item.msg.msgNum!=0}}" class="weui-badge" style="position: absolute;top: -.4em;right: -.4em;">{{item.msg.msgNum}}</view>
+        </view>
+        <view class="weui-cell__bd">
+          <view>{{item.title}}</view>
+          <view style="font-size: 13px;color: #888888;">{{item.desc}}</view>
+        </view>
+      </view>
+    </block>
+  </view>
+</block>
+
+<!-- 用户的行程  -->
+<block wx:if="{{ state==3 }}">
+  <view class="weui-cells weui-cells_after-title">
+    <block wx:for="{{list}}" wx:key="item">
+      <navigator url="/pages/trip/trip?id={{item.id}}&flag=1" class="weui-cell" data-index='{{index}}' data-id='{{item.id}}'>
+        <view class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+          <image src="{{item.imgUrl}}" style="width: 50px; height: 50px; display: block" mode="aspectFill" />
+        </view>
+        <view class="weui-cell__bd">
+          <view class='showOneLine'>{{item.title}}</view>
+          <view class='showTwoLine' style="font-size: 13px;color: #888888;">{{item.desc}}</view>
+        </view>
+      </navigator>
+    </block>
+  </view>
+</block>
+<!--我的行程  -->
+<block wx:if="{{ state==4 }}">
+  <view class="weui-cells weui-cells_after-title">
+    <block wx:for="{{list}}" wx:key="item">
+      <navigator url="/pages/trip/trip?id={{item.id}}&flag=1" class="weui-cell" data-index='{{index}}' data-id='{{item.id}}'>
+        <view class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+          <image src="{{item.imgUrl}}" style="width: 50px; height: 50px; display: block" mode="aspectFill" />
+        </view>
+        <view class="weui-cell__bd">
+          <view>{{item.title}}</view>
+          <view style="font-size: 13px;color: #888888;">{{item.desc}}</view>
+          <view wx:if="{{item.state==0}}" style="font-size: 13px;color: red;">未发布</view>
+          <view wx:if="{{item.state==2}}" style="font-size: 13px;color: red;">已取消</view>
+          <view wx:if="{{item.state==1}}" style="font-size: 13px;color: #888888;">已发布</view>
+        </view>
+        <view wx:if="{{item.state==0}}" catchtap='editagain' style='color:#369;' data-index="{{index}}">编辑</view>
+      </navigator>
+    </block>
+  </view>
+</block>
+
+<!--参加行程的用户  -->
+<block wx:if="{{ state==5 }}">
+  <view class="weui-cells weui-cells_after-title">
+    <block wx:for="{{list}}" wx:key="item">
+      <navigator url="/pages/userInfo/userinfo?id={{item.user}}&flag=1" class="weui-cell" data-index='{{index}}' data-id='{{item.id}}'>
+        <view class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+          <image src='{{item.avatarUrl||"/img/logo.png"}}' style="width: 50px; height: 50px; display: block;border-radius:25px;" mode="aspectFill" />
+        </view>
+        <view class="weui-cell__bd">
+          <view>{{item.nickName}}</view>
+          <!-- <view style="font-size: 13px;color: #888888;">{{item.userMsg}}</view> -->
+          <view style="font-size: 13px;color: #888888;" wx:if="{{tripUser==userId||userId==item.user}}">
+            <block wx:if="{{item.contactType==0}}">电话：{{item.contact||"无"}}</block>
+            <block wx:elif="{{item.contactType==1}}">微信：{{item.contact||"无"}}</block>
+            <block wx:elif="{{item.contactType==2}}">QQ：{{item.contact||"无"}}</block>
+            <block wx:elif="{{item.contactType==3}}">联系：{{item.contact||"无"}}</block>
+          </view>
+          <view style="font-size: 13px;color: #888888;" wx:if="{{(tripUser==userId||userId==item.user)}}">性别：{{item.gender==1?"男":"女"}}</view>
+          <view style="font-size: 13px;color: #888888;" wx:if="{{(item.male||item.female)&&(tripUser==userId||userId==item.user)}}">同行：{{item.male}}男 {{item.female}}女</view>
+          <!-- </view> -->
+          <view style="font-size: 13px;color: #888888;" wx:if="{{item.desc&&(tripUser==userId||userId==item.user)}}">留言：{{item.desc}}</view>
+          <!-- <view wx:if="{{item.state==0}}" style="font-size: 13px;color: red;">未发布</view> -->
+        </view>
+        <!-- <view wx:if="{{item.state==0}}"  catchtap='editagain' style='color:#369;' data-index="{{index}}">编辑</view> -->
+      </navigator>
+    </block>
+  </view>
+</block>
+
+<!-- 搜索的用户  -->
+
+<block wx:if="{{ state==6 }}">
+  <view class="weui-cells weui-cells_after-title">
+    <block wx:for="{{list}}" wx:key="item">
+      <navigator url="/pages/userInfo/userinfo?id={{item.id}}&flag=2" class="weui-cell" data-index='{{index}}' data-id='{{item.id}}'>
+        <view class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+          <image src='{{item.avatarUrl||"/img/logo.png"}}' style="width: 50px; height: 50px; display: block;border-radius:25px;" mode="aspectFill" />
+        </view>
+        <view class="weui-cell__bd">
+          <view>{{item.nickName}}</view>
+          <view style="font-size: 13px;color: #888888;">{{item.userMsg}}</view>
+          <!-- <view wx:if="{{item.state==0}}" style="font-size: 13px;color: red;">未发布</view> -->
+        </view>
+        <!-- <view wx:if="{{item.state==0}}"  catchtap='editagain' style='color:#369;' data-index="{{index}}">编辑</view> -->
+      </navigator>
+    </block>
+  </view>
+</block>
+
+
+<!-- 拼车信息-我的拼车  -->
+<block wx:if="{{ state==8 }}">
+  <view class="weui-cells weui-cells_after-title">
+    <block wx:for="{{list}}" wx:key="item">
+      <view class="weui-cell" data-index='{{index}}' data-id='{{item.id}}' bindtap='showDetails'>
+        <view class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+          <image src='{{item.avatarUrl||"/img/logo.png"}}' style="width: 50px; height: 50px; display: block;border-radius:25px;" mode="aspectFill" />
+        </view>
+        <view class="weui-cell__bd" style='text-align:left;'>
+          <view>路线：{{item.route}}</view>
+          <view style="font-size: 13px;color: #888888;">时间：{{item.startTime}}</view>
+          <view style="font-size: 13px;color: #888888;">费用：{{item.price}}</view>
+          <view style="font-size: 20rpx;color: #9c3;margin:10rpx 0rpx">
+            <p style='border:1px solid #9c3;border-radius:6rpx;height:32rpx;line-height:32rpx;padding:0px 2px;'>{{item.type==0?"一次发车":"固定时间"}}</p>
+          </view>
+          <!-- <view wx:if="{{item.state==0}}" style="font-size: 13px;color: red;">未发布</view> -->
+        </view>
+        <view wx:if="{{flag==1}}" catchtap='attendCoolsCar' style='color:#369;' data-id='{{item.id}}' data-flag="1" data-startime="{{item.startTime}}" data-type='{{item.type}}'>拼车</view>
+        <view wx:if="{{flag==0}}" catchtap='attendCoolsCar' style='color:#369;' data-id='{{item.id}}' data-flag="0" data-index='{{index}}' data-startime="{{item.startTime}}" data-type='{{item.type}}'>取消</view>
+        <!-- <view wx:if="{{item.state==0}}"  catchtap='editagain' style='color:#369;' data-index="{{index}}">编辑</view> -->
+      </view>
+
+    </block>
+  </view>
+</block>
+
+<!-- 拼车信息-我的发布  -->
+<block wx:if="{{ state==9 }}">
+  <view class="weui-cells weui-cells_after-title">
+    <block wx:for="{{list}}" wx:key="item">
+      <view class="weui-cell" data-index='{{index}}' data-id='{{item.id}}' bindtap='showDetails'>
+        <view class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+          <image src='{{item.avatarUrl||"/img/logo.png"}}' style="width: 50px; height: 50px; display: block;border-radius:25px;" mode="aspectFill" />
+        </view>
+        <view class="weui-cell__bd" style='text-align:left;'>
+          <view>路线：{{item.route}}</view>
+          <view style="font-size: 13px;color: #888888;">时间：{{item.startTime}}</view>
+          <view style="font-size: 13px;color: #888888;">费用：{{item.price}}</view>
+
+          <!-- <view wx:if="{{item.state==0}}" style="font-size: 13px;color: red;">未发布</view> -->
+        </view>
+        <view wx:if="{{item.state==1}}" catchtap='coolsCarState' style='color:#369;' data-state="2" data-index='{{index}}' data-id='{{item.id}}'>取消发布</view>
+        <view wx:if="{{item.state==2}}" catchtap='coolsCarState' style='color:#369;' data-state="1" data-index='{{index}}' data-id='{{item.id}}'>重新发布</view>
+        <!-- <view wx:if="{{item.state==0}}"  catchtap='editagain' style='color:#369;' data-index="{{index}}">编辑</view> -->
+      </view>
+    </block>
+  </view>
+</block>
+
+
+<!-- 这是一个自定义弹窗  -->
+<view class='mask' hidden='{{!showMask}}' catchtap='hideMask'></view>
+<view class='coolsCar' hidden='{{!showMask}}'>
+  <!-- <view style='position:absolute;top:0px;bottom:0px;margin:auto;'> -->
+  <view>详细信息</view>
+  <view>路线：{{item.route}}</view>
+  <view>时间：{{item.startTime}} </view>
+  <view>费用：{{item.price}}</view>
+  <view>
+    <block wx:if="{{item.contactType==0}}">电话</block>
+    <block wx:if="{{item.contactType==1}}">微信</block>
+    <block wx:if="{{item.contactType==2}}">QQ</block>
+    <block wx:if="{{item.contactType==3}}">其他</block>：{{item.contact}}
+    <p style="color:#369" data-contact="{{item.contact}}" catchtap="copy">复制</p>
+  </view>
+  <view>介绍：{{item.desc}}</view>
+  <!-- </view> -->
+</view>

@@ -1,0 +1,56 @@
+/* pages/prepay/prepay.wxss */
+page{
+  background: #eee;
+}
+.address{
+  padding: 10rpx;
+  width: 100%;
+  border-bottom: 5rpx dashed #999;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  background: #fff;
+
+}
+.noaddress{
+  text-align: center;
+  font-size: 30rpx;
+  width: 100%;
+}
+.noaddress label{
+  color:#ff0036;
+}
+.address-userInfo{
+  font-size: 35rpx;
+}
+.address-address{
+  font-size: 30rpx
+}
+.address-detail{
+  font-size: 25rpx;
+}
+.address-change{
+  margin-right: 30rpx;
+  margin-left: auto;
+  color: #028bf3;
+}
+.preOrder{
+  margin-top: 20rpx;
+  width: 100%;
+  background: #fff;
+}
+.price{
+  color: #ff0036;
+}
+.bar{
+  position: fixed;
+  bottom:0rpx;
+  left: 0rpx;
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 50rpx;
+  color: #fff;
+  background: #ff0036;
+  text-align: center;
+}

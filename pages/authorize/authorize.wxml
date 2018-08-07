@@ -1,0 +1,15 @@
+<!--pages/authorize/authorize.wxml-->
+<view style='height:100%;width:100%;justify-content: center;position:relative' class='container'>
+  <view class='info'>
+    <view style='text-align:center;font-size:10pt'>1.获取用户的公开信息</view>
+    <view style='text-align:center;font-size:10pt'>2.因业务需求用户授权后才可以申请代言</view>
+    <view class="button-sp-area">
+      <button wx:if="{{canIUse}}" class="weui-btn" type="primary" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" plain="true">授权获取资料</button>
+      <button wx:elif="{{!canIUse&&canIUseOpenSetting}}" class="weui-btn" type="primary" open-type="openSetting" bindopensetting="bindOpenSetting" plain="true">授权获取资料</button>
+      <button wx:elif="{{!canIUse&&!canIUseOpenSetting}}" class="weui-btn" type="primary" bindtap="openSetting" plain="true">授权获取资料</button>
+      <!-- <button wx:if="{{canIUseOpenSetting}}" class="weui-btn" type="primary" open-type="openSetting" bindopensetting="bindOpenSetting" plain="true">授权获取当前位置</button>
+      <button wx:if="{{!canIUseOpenSetting}}" class="weui-btn" type="primary" bindtap="openSetting" plain="true">授权获取当前位置</button> -->
+    </view>
+  </view>
+  <!-- <view wx:else>请升级微信版本</view> -->
+</view>

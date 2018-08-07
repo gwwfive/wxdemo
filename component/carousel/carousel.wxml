@@ -1,0 +1,15 @@
+<!--component/carousel /carousel .wxml-->
+
+<swiper  indicator-dots="{{true}}" indicator-active-color="#A3D95B" autoplay="{{true}}" circular="{{true}}" previous-margin="{{'0rpx'}}" next-margin="{{'0rpx'}}" bindchange="swiperChange" class='weui-flex' style='background-color:#fff;'>
+  <block wx:for="{{carousel}}" wx:key="{{index}}">
+    <swiper-item>
+      <view class='item {{swiperIndex == index ?"active" : ""}}' bindtap='readDetail' data-url="{{item.url}}">
+        <!-- <view class='title'>{{item.title}}</view> -->
+        <view class='{{swiperIndex == index ?"img_active" : ""}}'>
+          <image src="{{item.url}}" class="slide-image " mode='scaleToFill' />
+        </view>
+        <!-- <view class='text'>{{item.desc}}</view> -->
+      </view>
+    </swiper-item>
+  </block>
+</swiper>

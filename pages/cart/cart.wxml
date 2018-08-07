@@ -1,0 +1,55 @@
+<!-- 列表  -->
+<block wx:if="{{cartList.length>0}}">
+  <view class='cart-list'>
+    <view wx:for="{{cartList}}" wx:key="item" class='cart-item'>
+      <view class='cart-item-upper' style='{{item.slideStyle}}' bindtouchstart='touchS' bindtouchmove='touchM' bindtouchend='touchE' data-index='{{index}}'>
+        <view class='cart-select'>
+          <image src='{{item.select?"/img/select_fill.png":"/img/select.png"}}' catchtap='select' data-index='{{index}}'></image>
+        </view>
+        <view class='cart-image'>
+          <image src='{{item.sku__product__imgUrl}}' mode='aspectFill'></image>
+        </view>
+        <view class='cart-bar'>
+          <view class='cart-title'>
+            {{item.sku__product__productName}}
+          </view>
+          <view class='cart-title-detail'>
+            {{item.sku__skuName}}</view>
+          <view class='cart-price'>
+            ￥{{item.sku__sellPrice}}
+            <label class='cart-originprice'>原价￥{{item.sku__originPrice}}</label>
+          </view>
+          <view class='cart-count'>
+            <view class='cart-count-minus {{item.skuNum==1?"disable":""}}' catchtap='minusSkuNum' data-index="{{index}}">-</view>
+            <input class='cart-count-input' bindblur='inputSkuNum' value='{{item.skuNum||1}}' type='number' data-index="{{index}}"></input>
+            <view class='cart-count-plus' catchtap='addSkuNum' data-index="{{index}}">+</view>
+          </view>
+        </view>
+      </view>
+      <view class='cart-item-lower'>
+        <view class='cart-item-lower-del' bindtap='deleteCart' data-index="{{index}}" data-id="{{item.id}}">删除</view>
+      </view>
+    </view>
+  </view>
+  <!-- 结算栏  -->
+  <view class='account-bar'>
+    <view class='account-select'>
+      <image src='{{selectAll?"/img/select_fill.png":"/img/select.png"}}' catchtap='selectAll'></image>
+      <text>全选</text>
+    </view>
+    <view class='account-total'>
+      合计：
+      <label>￥{{total}}</label>
+    </view>
+    <view class='account-btn theme' catchtap='account'>
+      结算
+    </view>
+  </view>
+</block>
+<block wx:elif="{{cartList.length==0&&cartListReady}}">
+  <view class='cart-empty'>
+    <image src='/img/cart_empty.png'></image>
+    <text>什么也没有~</text>
+    <!-- <button>去添加商品</button> -->
+  </view>
+</block>

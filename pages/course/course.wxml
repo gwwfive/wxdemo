@@ -1,0 +1,178 @@
+<!--pages/course/course.wxml-->
+<!--导航栏  -->
+<view class="weui-tab">
+    <view class="weui-navbar">
+        <block wx:for-items="{{ tabs}}" wx:key="{{ index }}">
+            <view id="{{ index }}" class="weui-navbar__item {{ activeIndex == index ? 'weui-bar__item_on' : '' }}" bindtap="tabClick">
+                <view class="weui-navbar__title">{{ item }}</view>
+            </view>
+        </block>
+        <view class="weui-navbar__slider" style="left: {{ sliderLeft }}px; transform: translateX({{ sliderOffset }}px); -webkit-transform: translateX({{ sliderOffset }}px);"></view>
+    </view>
+    <view class="weui-tab__panel">
+        <view class="weui-tab__content" hidden="{{ activeIndex != 0 }}">
+              <view class='course-num'>共3个课程</view>
+              <view class="appointment">
+                <!-- <view class="app-title">课程预约</view> -->
+                
+                <view class="app-moduler">
+                  <navigator url="{{url}}" class="mod-item">
+                    <view class="mod-signup">
+                      <image src="{{signupimg}}"></image>
+                    </view>
+                    <view class="mod-img">
+                      <image src="{{imgsrc}}" class="mod-image"></image>
+                    </view>
+                    <view class='mod-col'>
+                        <view class="mod-title">
+                          <text>初一数学强化班</text>  
+                        </view>
+                        <view class="mod-info">
+                          <!-- <view class="mod-icon">
+                            <image src="{{iconsrc}}" class="icon"></image>
+                          </view> -->
+                          <view class="moinfont">精品课程</view>
+                          <view class='mod-buy'>购买课程</view>
+                        </view>
+                    </view>
+                  </navigator>
+                  <navigator url="{{url}}" class="mod-item">
+                    <view class="mod-signup">
+                      <image src="{{signupimg}}"></image>
+                    </view>
+                    <view class="mod-img">
+                      <image src="{{imgsrc}}" class="mod-image"></image>
+                    </view>
+                    <view class='mod-col'>
+                        <view class="mod-title">
+                          <text>初一数学强化班</text>  
+                        </view>
+                        <view class="mod-info">
+                          <!-- <view class="mod-icon">
+                            <image src="{{iconsrc}}" class="icon"></image>
+                          </view> -->
+                          <view class="moinfont">精品课程</view>
+                          <view class='mod-buy'>购买课程</view>
+                        </view>
+                    </view>
+                  </navigator>
+                  <navigator url="{{url}}" class="mod-item">
+                    <view class="mod-signup">
+                      <image src="{{signupimg}}"></image>
+                    </view>
+                    <view class="mod-img">
+                      <image src="{{imgsrc}}" class="mod-image"></image>
+                    </view>
+                    <view class='mod-col'>
+                        <view class="mod-title">
+                          <text>初一数学强化班</text>  
+                        </view>
+                        <view class="mod-info">
+                          <!-- <view class="mod-icon">
+                            <image src="{{iconsrc}}" class="icon"></image>
+                          </view> -->
+                          <view class="moinfont">精品课程</view>
+                          <view class='mod-buy'>购买课程</view>
+                        </view>
+                    </view>
+                  </navigator>
+
+                </view>
+              </view>
+              <view class="weui-footer" style='margin-top:48px;'>
+                  <text class="weui-footer__text">没有更多了</text>
+              </view>
+        </view>
+        <view class="weui-tab__content" hidden="{{ activeIndex != 1 }}">
+              <view class='course-num'>共3个课程</view>
+              <view class="appointment">
+                <!-- <view class="app-title">课程预约</view> -->
+                
+                <view class="app-moduler">
+                  <navigator url="{{url}}" class="mod-item">
+                    <view class="mod-signup">
+                      <image src="{{signupimg}}"></image>
+                    </view>
+                    <view class="mod-img">
+                      <image src="{{imgsrc}}" class="mod-image"></image>
+                    </view>
+                    <view class='mod-col'>
+                        <view class="mod-title">
+                          <text>初一数学强化班</text>  
+                        </view>
+                        <view class="mod-info">
+                          <!-- <view class="mod-icon">
+                            <image src="{{iconsrc}}" class="icon"></image>
+                          </view> -->
+                          <view class="moinfont">精品课程</view>
+                          <view class='mod-buy'>购买课程</view>
+                        </view>
+                    </view>
+                  </navigator>
+                  <navigator url="{{url}}" class="mod-item">
+                    <view class="mod-signup">
+                      <image src="{{signupimg}}"></image>
+                    </view>
+                    <view class="mod-img">
+                      <image src="{{imgsrc}}" class="mod-image"></image>
+                    </view>
+                    <view class='mod-col'>
+                        <view class="mod-title">
+                          <text>初一数学强化班</text>  
+                        </view>
+                        <view class="mod-info">
+                          <!-- <view class="mod-icon">
+                            <image src="{{iconsrc}}" class="icon"></image>
+                          </view> -->
+                          <view class="moinfont">精品课程</view>
+                          <view class='mod-buy'>购买课程</view>
+                        </view>
+                    </view>
+                  </navigator>
+                  <navigator url="{{url}}" class="mod-item">
+                    <view class="mod-signup">
+                      <image src="{{signupimg}}"></image>
+                    </view>
+                    <view class="mod-img">
+                      <image src="{{imgsrc}}" class="mod-image"></image>
+                    </view>
+                    <view class='mod-col'>
+                        <view class="mod-title">
+                          <text>初一数学强化班</text>  
+                        </view>
+                        <view class="mod-info">
+                          <!-- <view class="mod-icon">
+                            <image src="{{iconsrc}}" class="icon"></image>
+                          </view> -->
+                          <view class="moinfont">精品课程</view>
+                          <view class='mod-buy'>购买课程</view>
+                        </view>
+                    </view>
+                  </navigator>
+
+                </view>
+              </view>
+              <view class="weui-footer" style='margin-top:48px;'>
+                  <text class="weui-footer__text">没有更多了</text>
+              </view>
+        </view>
+        <view class="weui-tab__content" hidden="{{ activeIndex != 2 }}">
+            <view class="weui-footer" style='margin-top:48px;'>
+                <text class="weui-footer__text">没有更多了</text>
+            </view>
+        </view>
+        <view class="weui-tab__content" hidden="{{ activeIndex != 3 }}">
+             <view class="weui-footer" style='margin-top:48px;'>
+                <text class="weui-footer__text">没有更多了</text>
+            </view>
+        </view>
+        <view class="weui-tab__content" hidden="{{ activeIndex != 4 }}">
+              <view class="weui-footer" style='margin-top:48px;'>
+                  <text class="weui-footer__text">没有更多了</text>
+              </view>
+        </view>
+    </view>
+</view>
+<!--导航栏end  -->
+
+

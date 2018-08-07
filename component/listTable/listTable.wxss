@@ -1,0 +1,5 @@
+/* component/listTable/listTable.wxss */
+@import "/utils/weui.wxss";
+.imgIcon{
+  width:90px;
+}

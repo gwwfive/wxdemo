@@ -1,0 +1,55 @@
+<!--pages/orderRate/orderRate.wxml-->
+<block wx:for="{{comments}}" wx:key="item">
+  <view class='rate-product'>
+    <image src="{{item.imgUrl}}" class='product-img' mode='aspectFill'></image>
+    <view style='margin-left:20rpx'>商品评分</view>
+    <view class='product-rate'>
+      <block wx:for="{{5}}" wx:key="rateitem" wx:for-item="rateitem" wx:for-index="idx">
+        <image src='{{item.rate>rateitem?"/img/star_fill.png":"/img/star.png"}}' data-index="{{index}}" data-rateindex="{{idx}}" bindtap='selecRate'></image>
+      </block>
+    </view>
+  </view>
+  <view class='rate-content'>
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <textarea class="weui-textarea" placeholder="分享一下体验吧~" style="height: 4.3em" bindinput='inputContent' maxlength='200'  data-index="{{index}}"/>
+        <view class="weui-textarea-counter">{{item.content.length}}/200</view>
+      </view>
+    </view>
+  </view>
+  <view class='rate-media'>
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <view class="weui-uploader">
+          <view class="weui-uploader__hd">
+            <view class="weui-uploader__title">添加图片</view>
+            <view class="weui-uploader__info">{{item.files.length}}/3</view>
+          </view>
+          <view class="weui-uploader__bd">
+            <view class="weui-uploader__files" id="uploaderFiles">
+              <block wx:for="{{item.files}}" wx:key="*this" wx:for-item="fileitem">
+                <view class="weui-uploader__file" bindtap="previewImage" id="{{fileitem}}" data-index="{{index}}">
+                  <image class="weui-uploader__img" src="{{fileitem}}" mode="aspectFill" />
+                </view>
+              </block>
+            </view>
+            <view class="weui-uploader__input-box">
+              <view class="weui-uploader__input" bindtap="chooseImage" data-index="{{index}}"></view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='niming'>
+    <block wx:if="{{item.isCheck}}">
+      <image src="/img/select_fill.png"></image>
+    </block>
+    <block wx:else>
+      <view class='noselect'></view>
+    </block>
+    <label>匿名评论</label>
+    <!-- <view style='display:inline-block;'>匿名评论</view> -->
+  </view>
+</block>
+<view class='rate-bar' bindtap='submitComment'>提交评论</view>

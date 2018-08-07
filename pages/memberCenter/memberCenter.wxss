@@ -1,0 +1,61 @@
+/* pages/memberCenter/memberCenter.wxss */
+page{
+  background: #eee;
+}
+.member{
+  width: 100%;
+  padding: 40rpx 10rpx 10rpx 10rpx;
+  text-align: center;
+  /* background: #ff0036; */
+  color: #fff;
+}
+.member-detail{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-top:30rpx;
+}
+.member-detail-item{
+  width: 50%;
+  font-size: 12pt;
+}
+.member-detail-item:active{
+  background: rgba(0, 0, 0, 0.5);
+}
+.app-title{
+ font-size: 36rpx;
+ font-family: '微软雅黑';
+ font-weight: bold;
+ border-left:10rpx solid #ff0036;
+ text-indent: 15rpx;
+}
+.member-quanyi{
+  /* padding-left: 20rpx; */
+  padding: 20rpx;
+  border-top: 1rpx solid #eee;
+  font-size: 10pt;
+  background: #fff;
+}
+.member-cell{
+  margin-top:2rpx;
+  background: #fff;
+  font-size: 36rpx;
+ font-family: '微软雅黑';
+ padding: 20rpx;
+ display: flex;
+ align-items: center;
+}
+.member-cell image{
+  width: 50rpx;
+  height: 50rpx;
+}
+.member-cell label{
+  margin-left: 30rpx;
+}
+.member-cell button{
+  border:none;
+  background: #ff0036;
+  color: #fff;
+  margin-right: 20rpx;
+  margin-left: auto;
+}

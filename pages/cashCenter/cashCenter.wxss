@@ -1,0 +1,62 @@
+/* pages/cashCenter/cashCenter.wxss */
+.cash-info{
+  width: 100%;
+  /* background: #ff0036; */
+  color: #fff;
+  text-align: center;
+  padding: 30rpx 0rpx;
+}
+.cash-info-total{
+  font-size: 35rpx;
+  /* margin-top:30rpx; */
+}
+.cash-info-residue{
+  /* display: inline-block; */
+  font-size: 30rpx;
+  margin-top:10rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cash-info-raise{
+  font-size: 30rpx;
+  margin: 40rpx 0rpx;
+  height: 70rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cash-info-raise-item{
+  flex: 1;
+  text-align: center;
+ 
+}
+.cash-info-raise-item:active{
+  background: rgba(0, 0, 0, 0.1) 
+}
+.cash-cells{
+  font-size: 30rpx;
+  background: #eee;
+}
+.cash-info-bar{
+  padding: 20rpx;
+}
+.cash-info-bar button{
+  border:1rpx solid #a3d95b;
+  color: #a3d95b;
+  background: #fff;
+}
+.cash-info-bar button:active{
+  background: rgba(0, 0, 0, 0.1);
+}
+.noagent{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.noagent button{
+  margin-top: 30rpx;
+}

@@ -1,0 +1,35 @@
+<block wx:if="{{collageList.length>0&&dataReady}}">
+  <block wx:for="{{collageList}}" wx:key="item">
+    <view class="appointment">
+      <view class="app-title">拼团时间：<label style='font-size:26rpx;'>{{item.startTime}} - {{item.endTime}}</label></view>
+      <view class="app-moduler">
+        <block wx:for="{{item.collageSku}}" wx:key='item' wx:for-item="skuitem">
+          <navigator url="/pages/collageDetail/collageDetail?id={{skuitem.id}}" class="mod-item">
+            <view class="mod-img">
+              <image src="{{skuitem.product__imgUrl}}" class="mod-image" mode='aspectFit'></image>
+            </view>
+            <view class='mod-col'>
+              <view class="mod-title">
+                <text>{{skuitem.product__productName}} - {{skuitem.sku__skuName}}</text>
+              </view>
+              <view class='mod-price'>
+                <view class='collagePrice'>团购价￥{{skuitem.collagePrice}}</view>
+                <!-- <p class='collagePrice'></p> -->
+                <view class='mod-originprice '>￥{{skuitem.sku__sellPrice}}</view>
+              </view>
+
+              <!-- <view class="mod-info">
+            <view class="moinfont">已售{{item.saleNum}}件</view>
+          </view> -->
+            </view>
+          </navigator>
+        </block>
+      </view>
+    </view>
+  </block>
+</block>
+<block wx:if="{{collageList.length==0&&dataReady}}">
+  <view class='noCollage'>
+    没有拼团信息
+  </view>
+</block>

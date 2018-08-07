@@ -1,0 +1,36 @@
+<!--pages/classify/classify.wxml-->
+<view class='category'>
+  <view class='top'>
+    <searchBar/>
+  </view>
+  <view class="bottom">
+    <!--分类导航栏-->
+    <scroll-view class='left-navbar' scroll-y="true">
+      <view wx:for="{{categoryList}}" class="{{ currentTab == index ? 'active' : '' }}" wx:key="unique" bindtap='navbarTap' id="{{index}}" data-id="{{item.id}}">{{item.label}}
+      </view>
+    </scroll-view>
+
+    <scroll-view id="right" scroll-y="true" scroll-top="{{scrollTop}}">
+      <view class='product-container'>
+        <block wx:if="{{productList.length>0&&dataReady}}">
+          <block wx:for="{{productList}}" wx:key='{{item}}'>
+            <navigator url='/pages/productDetail/productDetail?id={{item.id}}' class='item'>
+              <view class='product'>
+                <image src='{{item.imgUrl}}'></image>
+                <view class='product-title'>{{item.productName}}</view>
+                <view class='product-price'>￥{{item.price}}
+                  <label wx:if='{{item.price!=item.orginPrice}}' class='product-originprice'>原价￥{{item.originPrice}}</label>
+                </view>
+                <view class='product-sale'>已售{{item.saleNum}}件</view>
+              </view>
+            </navigator>
+          </block>
+        </block>
+        <block wx:if="{{productList.length==0&&dataReady}}">
+          <view class='noProduct'>没有相关数据</view>
+        </block>
+      </view>
+    </scroll-view>
+
+  </view>
+</view>

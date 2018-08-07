@@ -1,0 +1,137 @@
+/* pages/mine/mine.wxss */
+@import "/utils/weui.wxss";
+page{
+  width: 100%;
+  height: 100%;
+  background-color: #f2f2f2;
+}
+.mine{
+  /* background-color:#ff0036; */
+  position:relative;
+  /* display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 15px 15px 15px; */
+  /* background: #ffffff; */
+  /* border-top: #d9d9d9 1px solid; */
+  /* border-bottom: #d9d9d9 1px solid; */
+}
+.userInfo{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+  padding-bottom: 15px; 
+}
+.userinfo-avatar{
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx; 
+  border-radius: 50%;
+}
+.nickName{
+  color: #fff;
+  font-size: 14pt;
+}
+.tag{
+  color:#fff;
+text-align:center;
+height:20px;
+line-height:20px;
+font-size:10pt;
+border:1px solid #fff;
+border-radius:10px;
+margin:5px 5px;
+padding:0px 20px;
+white-space:nowrap;
+
+}
+.button_rebuild {
+  position:relative;
+  box-sizing:border-box;
+  font-size:16pt;
+  text-align:left; 
+  text-decoration:none;
+  line-height:1.41176471;
+  border-radius:0px;
+  -webkit-tap-highlight-color:transparent;
+  overflow:visible;
+  color:#000000;
+  background-color:#ffffff;
+} 
+.button_rebuild::after {
+  border:0px solid rgba(0, 0, 0, 0.2);
+}
+.icon{
+  position: absolute;
+  /* border: 28rpx solid #ff0036;  */
+  border:28rpx solid #a3d95b;
+  width: 128rpx;
+  height: 128rpx;
+  border-radius: 50%;
+  top:-8rpx;
+
+}
+
+.m-od-tab {
+  font-size: 24rpx ;
+  text-align: center;
+  background-color: #fff;
+  line-height: 40rpx !important;
+  box-shadow: 0px 0rpx 10rpx rgba(0, 0, 0, 0.35);
+  color: #888 !important;
+}
+.m-od-tab .g-flex-item {
+  padding: 28rpx 0 20rpx 0;
+  line-height: 40rpx !important;
+}
+
+.m-od-tab button{
+  line-height: 40rpx;
+  color:#666;
+}
+
+.m-od-tab .g-flex-item:active {
+  background-color: #ececec;
+}
+
+.m-container{
+  width: 100%;
+ font-size: 17px;
+background: #fff;
+margin-top: 40rpx;
+
+}
+.m-item{
+ display: inline-block;
+  width:25%;
+  /* height: 165rpx; */
+  box-sizing:border-box;
+  padding: 20rpx;
+  border-right: 1rpx solid #eee;
+  border-bottom: 1rpx solid #eee;
+
+}
+.m-item-hd{
+  text-align: center;
+  line-height: 70rpx;
+  font-size: 70rpx;
+}
+.m-item-hd label{
+  font-size: 70rpx;
+  
+}
+.m-item-bd{
+  font-size: 14px;
+  text-align: center;
+}
+
+.m-item text{
+  height: 45rpx;
+  line-height: 45rpx;
+  font-size: 30rpx;
+
+}

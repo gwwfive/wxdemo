@@ -1,0 +1,15 @@
+<!--pages/cashRecord/cashRecord.wxml-->
+<block wx:if="{{list.length>0&&dataReady}}">
+  <block wx:for="{{list}}">
+    <view class='cashrecord'>
+      <view class='detail'>
+        <view>状态：{{item.status==0?"未审核":item.status==1?"已放款":"未通过"}}</view>
+        <view>时间：{{item.applyTime}}</view>
+      </view>
+      <view class='value'>-￥{{item.cash}}</view>
+    </view>
+  </block>
+</block>
+<block wx:else>
+  <view class='noCashRecord'>没有数据~</view>
+</block>

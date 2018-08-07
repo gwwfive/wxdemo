@@ -1,0 +1,71 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/mine/mine",
+    "pages/coupon/coupon",
+    "pages/goodCollection/goodCollection",
+    "pages/applyCash/applyCash",
+    "pages/agentApply/agentApply",
+    "pages/memberCenter/memberCenter",
+    "pages/memberLevel/memberLevel",
+    "pages/scoreRecord/scoreRecord",
+    "pages/cart/cart",
+    "pages/orderRate/orderRate",
+    "pages/prepay/prepay",
+    "pages/addressList/addressList",
+    "pages/addAddress/addAddress",
+    "pages/productDetail/productDetail",
+    "pages/cashCenter/cashCenter",
+    "pages/profit/profit",
+    "pages/order/order",
+    "pages/category/category",
+    "pages/logs/logs",
+    "pages/about/about",
+    "pages/map/map",
+    "pages/course/course",
+    "pages/fans/fans",
+    "pages/cashRecord/cashRecord",
+    "pages/shopInfo/shopInfo",
+    "pages/collage/collage",
+    "pages/collageDetail/collageDetail",
+    "pages/recieveCoupon/recieveCoupon",
+    "pages/recommend/recommend"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#a3d95b",
+    "navigationBarTitleText": "",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#a3d95b",
+    "borderStyle": "#F7F7FA",
+    "list": [
+      {
+        "selectedIconPath": "img/home_fill.png",
+        "iconPath": "img/home.png",
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "selectedIconPath": "img/category_fill.png",
+        "iconPath": "img/category.png",
+        "pagePath": "pages/category/category",
+        "text": "分类"
+      },
+      {
+        "selectedIconPath": "img/cart_fill.png",
+        "iconPath": "img/cart.png",
+        "pagePath": "pages/cart/cart",
+        "text": "购物车"
+      },
+      {
+        "selectedIconPath": "img/mine_fill.png",
+        "iconPath": "img/mine.png",
+        "pagePath": "pages/mine/mine",
+        "text": "我的"
+      }
+    ]
+  }
+}

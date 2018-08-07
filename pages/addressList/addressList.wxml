@@ -1,0 +1,30 @@
+<!--pages/addressList/addressList.wxml-->
+<view>
+  <block wx:for="{{addressList}}" wx:key="item">
+    <view class='address'>
+      <view class='address-select'>
+        <image src='{{item.isNormal?"/img/select_fill.png":"/img/select.png"}}' bindtap='select' data-index="{{index}}"></image>
+      </view>
+      <view>
+        <view class='address-userInfo'>{{item.name}} {{item.phoneNum}}</view>
+        <view class='address-detail'>{{item.province}} {{item.city}} {{item.area}}</view>
+        <view class='address-detail'>详细：{{item.address}}</view>
+      </view>
+      <view class='address-edit'>
+        <image src='/img/edit.png' bindtap='goToedit' data-id="{{item.id}}"></image>
+      </view>
+    </view>
+  </block>
+</view>
+<navigator class='address-bar' url='/pages/addAddress/addAddress'>
+  <view class="weui-cell weui-cell_select">
+    <view class="weui-cell__hd weui-cell__hd_in-select-after">
+      <view class="weui-label">
+        <!-- <image src="/img/add.png"></image> -->
+      </view>
+    </view>
+    <view class="weui-cell__bd" bindtap='selectAddress'>
+      <view class="weui-select weui-select_in-select-after">添加新的地址</view>
+    </view>
+  </view>
+</navigator>

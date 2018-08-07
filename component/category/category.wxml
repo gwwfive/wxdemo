@@ -1,0 +1,2 @@
+<!--component/category/category.wxml-->
+<view class='title'>{{title}}</view>

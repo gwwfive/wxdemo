@@ -1,0 +1,29 @@
+/* pages/scoreRecord/scoreRecord.wxss */
+page{
+  background: #eee;
+}
+.score{
+  /* background: #ff0036; */
+  color: #fff;
+  height: 300rpx;
+  text-align: center;
+  line-height: 300rpx;
+}
+.score label{
+  font-size: 30rpx;
+}
+.title{
+  padding: 20rpx;
+  background: #fff;
+}
+.cell{
+  margin-top: 2rpx;
+  display: flex;
+  align-items: center;
+  padding: 20rpx;
+  background: #fff;
+  animation: in 500ms ease 0ms forwards;
+}
+.item{
+  font-size: 12pt;
+}

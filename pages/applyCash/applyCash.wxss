@@ -1,0 +1,25 @@
+/* pages/applyCash/applyCash.wxss */
+.cash-residue{
+  font-size: 30rpx;
+  text-align: center;
+  /* line-height: 200rpx; */
+  /* height: 200rpx; */
+  /* background: #ff0036; */
+  color:#fff;
+  padding: 20rpx;
+}
+.cash-cells{
+  font-size: 40rpx;
+  background: #eee;
+}
+.cash-bar{
+  padding: 20rpx;
+}
+.cash-bar button{
+  border: 1rpx solid #a3d95b;
+  color: #a3d95b;
+  background: #fff;
+}
+.cash-bar button:active{
+  background: rgba(0, 0, 0, 0.1)
+}

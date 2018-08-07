@@ -1,0 +1,52 @@
+/* pages/addressList/addressList.wxss */
+page{
+  background: #eee;
+}
+.address{
+  width: 100%;
+ margin-bottom: 10rpx;
+  display: flex;
+  background: #fff;
+
+}
+.address-select{
+  width: 200rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.address-select image{
+  width: 50rpx;
+  height: 50rpx;
+}
+.address-edit{
+  width: 150rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 0rpx;
+  margin-left: auto;
+}
+.address-edit image{
+  width: 60rpx;
+  height: 60rpx;
+}
+.address-userInfo{
+  font-size: 40rpx;
+
+}
+.address-detail{
+  font-size: 30rpx;
+}
+.address-bar{
+  width: 100%;
+  background: #fff;
+  position: fixed;
+  bottom: 0rpx;
+  top: auto;
+  left: 0rpx;
+}
+.address-bar image{
+  width: 50rpx;
+  height: 50rpx;
+}

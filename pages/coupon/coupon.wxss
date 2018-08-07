@@ -1,0 +1,181 @@
+/* pages/coupon/coupon.wxss */
+
+page, .page, .page__bd {
+  height: 100%;
+}
+
+.page__bd {
+  padding-bottom: 0;
+}
+
+.weui-tab__content {
+  /* padding-top: 60px; */
+  text-align: center;
+  background: #eee;
+  height: 100%;
+}
+
+.weui-navbar__slider {
+  background-color: #ff0036;
+}
+
+.stamp {
+  /* width: 100%; */
+  height: 240rpx;
+  /* width: 710rpx; */
+  /* padding: 0 20rpx; */
+  margin: 15rpx;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  animation: in 500ms ease 0ms forwards;
+}
+
+.stamp .i {
+  position: absolute;
+  left: 20%;
+  top: 45px;
+  height: 190px;
+  width: 390px;
+  background-color: rgba(255, 255, 255, 0.15);
+  transform: rotate(-30deg);
+}
+
+
+.stamp .par {
+  float: left;
+  /* margin-left: 20rpx; */
+  padding: 15rpx 15rpx;
+  width: 440rpx;
+  border-right: 4rpx dashed rgba(255, 255, 255, 0.3);
+  text-align: left;
+  background: #f39b00;
+  color: #fff;
+  font-size: 30rpx;
+}
+
+.stamp .par p {
+  color: #fff;
+}
+
+.stamp .par span {
+  font-size: 60rpx;
+  color: #fff;
+  margin-right: 5px;
+}
+
+.stamp .par .sign {
+  font-size: 35rpx;
+}
+
+.stamp .par .sub {
+  position: relative;
+  /* top: -5px; */
+  color: rgba(255, 255, 255, 0.8);
+}
+.stamp .copy {
+  /* display: inline-block; */
+  /* margin-right: 20rpx; */
+  padding: 15rpx 30rpx;
+  width: 280rpx;
+  vertical-align: text-bottom;
+  font-size: 30rpx;
+  color: rgb(255, 255, 255);
+  background: #f39b00;
+  text-align: center;
+}
+
+.stamp .copy p {
+  font-size: 16px;
+  margin-top: 15px;
+}
+
+.stamp01 {
+  /* background: #f39b00; */
+  /* background: radial-gradient(rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 10rpx, #f39b00 10rpx); */
+  background-size: 30rpx 30rpx;
+  background-position: 18rpx 0rpx;
+}
+.stamp01 .left{
+  width: 20rpx;
+  height: 100%; 
+  background: radial-gradient(rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 12rpx, #f39b00 12rpx);
+  background-size: 35rpx 35rpx;
+  background-position: 18rpx 0rpx; 
+}
+.stamp01 .right{
+  width: 20rpx;
+  height: 100%; 
+  background: radial-gradient(rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 12rpx, #f39b00 12rpx);
+  background-size: 35rpx 35rpx;
+  background-position: 0rpx 0rpx; 
+
+}
+
+
+.stamp02 .par{
+  background: #d24161;
+}
+.stamp02 .copy{
+  background: #d24161;
+}
+.stamp02 .left{
+  width: 20rpx;
+  height: 100%; 
+  background: radial-gradient(rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 12rpx, #d24161 12rpx);
+  background-size: 35rpx 35rpx;
+  background-position: 18rpx 0rpx; 
+}
+.stamp02 .right{
+  width: 20rpx;
+  height: 100%; 
+  background: radial-gradient(rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 12rpx, #d24161 12rpx);
+  background-size: 35rpx 35rpx;
+  background-position: 0rpx 0rpx; 
+
+}
+
+.stamp03 .par{
+  background: #7EAB1E;
+}
+.stamp03 .copy{
+  background: #7EAB1E;
+}
+.stamp03 .left{
+  width: 20rpx;
+  height: 100%; 
+  background: radial-gradient(rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 12rpx, #7EAB1E 12rpx);
+  background-size: 35rpx 35rpx;
+  background-position: 18rpx 0rpx; 
+}
+.stamp03 .right{
+  width: 20rpx;
+  height: 100%; 
+  background: radial-gradient(rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 12rpx, #7EAB1E 12rpx);
+  background-size: 35rpx 35rpx;
+  background-position: 0rpx 0rpx; 
+
+}
+
+.stamp04 .par{
+  background: #50ADD3;
+}
+.stamp04 .copy{
+  background: #50ADD3;
+}
+.stamp04 .left{
+  width: 20rpx;
+  height: 100%; 
+  background: radial-gradient(rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 12rpx, #50ADD3 12rpx);
+  background-size: 35rpx 35rpx;
+  background-position: 18rpx 0rpx; 
+}
+.stamp04 .right{
+  width: 20rpx;
+  height: 100%; 
+  background: radial-gradient(rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 12rpx, #50ADD3 12rpx);
+  background-size: 35rpx 35rpx;
+  background-position: 0rpx 0rpx; 
+
+}
+

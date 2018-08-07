@@ -1,0 +1,26 @@
+/* component/listBlock/listBlock.wxss */
+@import "/utils/weui.wxss";
+.listBlock{
+  width:100%; 
+  margin-top:20rpx; 
+}
+.listBlock:after{ 
+  content:""; 
+  display:block; 
+  clear:both; 
+}  
+.list__item{
+  margin-left: 2%;
+  margin-right: 2%;
+  float:left; 
+  width:46%; 
+  box-sizing: border-box; 
+  padding-bottom:10px; 
+}
+.list__img{
+  width: 100%;
+  height:110px;
+}
+.list__title{
+  font-size: 9pt;
+}

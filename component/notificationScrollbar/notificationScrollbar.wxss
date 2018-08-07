@@ -1,0 +1,15 @@
+/* component/notificationScrollbar/notificationScrollbar.wxss */
+.swiper_container {
+  height: 60rpx;
+  background-color: #efeff4;
+  /* width: 80vw; */
+}
+
+.swiper_item {
+  font-size: 35rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  letter-spacing: 2px;
+  color: orange;
+}

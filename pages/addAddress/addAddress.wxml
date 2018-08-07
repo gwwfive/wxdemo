@@ -1,0 +1,71 @@
+<!--pages/addAddress/addAddress.wxml-->
+<!-- <view style='z-index:1;'> -->
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell weui-cell_input">
+    <view class="weui-cell__hd">
+      <view class="weui-label">收件人</view>
+    </view>
+    <view class="weui-cell__bd">
+      <input class="weui-input" value='{{name}}' placeholder="请输入收件人姓名" bindblur='inputName' />
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_select">
+    <view class="weui-cell__hd weui-cell__hd_in-select-after">
+      <view class="weui-label">省/市/区</view>
+    </view>
+    <view class="weui-cell__bd" bindtap='selectAddress'>
+      <view class="weui-select weui-select_in-select-after">{{provinces[value[0]].name}} {{citys[value[1]].name}} {{areas[value[2]].name}}</view>
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_input">
+    <view class="weui-cell__hd">
+      <view class="weui-label">详细地址</view>
+    </view>
+    <view class="weui-cell__bd">
+      <input class="weui-input" value='{{address}}' placeholder="请输入详细地址" bindblur='inputAddress' />
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_input">
+    <view class="weui-cell__hd">
+      <view class="weui-label">电话号码</view>
+    </view>
+    <input class="weui-input" value='{{phoneNum}}' placeholder="请输入电话号码" bindblur='inputPhone' />
+    <view class="weui-cell__ft" wx:if="{{!isContact}}">
+      <icon type="warn" size="23" color="#E64340"></icon>
+    </view>
+  </view>
+  <!-- </view> -->
+  <!-- <view class="weui-cell weui-cell_switch">
+    <view class="weui-cell__bd">常用地址</view>
+    <view class="weui-cell__ft">
+      <switch  bindchange="switchChange" />
+    </view>
+  </view> -->
+</view>
+<view style='padding:20rpx;'>
+  <button class="weui-btn" type="primary" plain="true" bindtap='save'>保存</button>
+  <button wx:if="{{addressId !=0}}" class="weui-btn" type="warn"  bindtap='deleteAddress'>删除</button>
+</view>
+<!-- </view> -->
+
+<!--pages/attendInfo/attendInfo.wxml-->
+<!-- 地址选择器 -->
+<view class='mask' hidden='{{!showPicker}}' catchtap='hideAddressPicker'>
+  <!-- <view ></view> -->
+  <view class='address-picker'>
+    <picker-view style="width: 100%; height: 300rpx;" bindchange="cityChange" value="{{value}}" wx:key="">
+      <picker-view-column>
+        <view wx:for="{{provinces}}" class="picker-item" wx:key="item">
+          {{item.name}}</view>
+      </picker-view-column>
+      <picker-view-column>
+        <view wx:for="{{citys}}" class="picker-item" wx:key="item">
+          {{item.name}}</view>
+      </picker-view-column>
+      <picker-view-column>
+        <view wx:for="{{areas}}"  class="picker-item" wx:key="item">
+          {{item.name}}</view>
+      </picker-view-column>
+    </picker-view>
+  </view>
+</view>

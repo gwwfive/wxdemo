@@ -1,0 +1,84 @@
+<!--index.wxml-->
+<!--轮播图组件  -->
+<carousel carousel="{{carousels}}" style="display:flex;justify-content: center;" />
+
+<!--地址  -->
+<view class='weui-panel__bd' style='background-color:#fff;' wx:if='{{shop}}'>
+  <view class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+    <navigator class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+      <view class="weui-media-box__title">{{shop.shopName}}</view>
+      <view class="weui-media-box__desc">{{shop.shopAddress}}</view>
+    </navigator>
+    <view class="index-ft" bindtap='openMap'>
+      <image class='img-icon' src='/img/navigation.png'></image>
+      <view class='navigation'>导航到店</view>
+    </view>
+  </view>
+</view>
+
+<!--分类  -->
+<view class='category'>
+  <navigator url="/pages/recieveCoupon/recieveCoupon" class='item'>
+    <view data-mode="0" class='img'>
+      <image src='/img/a1.png' class="animation" style='background: linear-gradient(to right,#2DCDFB , #028bf3); '></image>
+    </view>
+    <view class="item_title">领券中心</view>
+  </navigator>
+
+  <navigator url="/pages/recommend/recommend" class='item'>
+    <view class='img' data-mode="1">
+      <image src='/img/a2.png' class="animation" style='background: linear-gradient(to right,#43DB8A , #2FD09A); '></image>
+    </view>
+    <view class="item_title">最新推荐</view>
+  </navigator>
+
+  <navigator url="/pages/collage/collage" class='item'>
+    <view class='img' data-mode="2">
+      <image src='/img/a3.png' class="animation" style='background: linear-gradient(to right,#978CFB , #716BFE); '></image>
+    </view>
+    <view class="item_title">我要团购</view>
+  </navigator>
+
+  <navigator url="/pages/shopInfo/shopInfo" class='item'>
+    <view class='img' data-mode="3">
+      <image src='/img/a4.png' class="animation" style='background: linear-gradient(to right,#F36649 , #E03C48); '></image>
+    </view>
+    <view class="item_title">关于我们</view>
+  </navigator>
+  
+</view>
+<!--分类end  -->
+
+<!--商城模块  -->
+<!-- <view class="clear"></view> -->
+<view class="appointment">
+  <view class="app-title">推荐购买</view>
+
+  <view class="app-moduler">
+    <block wx:for="{{recommentList}}" wx:key='item'>
+      <navigator url="/pages/productDetail/productDetail?id={{item.id}}" class="mod-item movein">
+        <view class="mod-img">
+          <image src="{{item.imgUrl}}" class="mod-image" mode='aspectFit'></image>
+        </view>
+        <view class='mod-col'>
+          <view class="mod-title">
+            <text>{{item.productName}}</text>
+          </view>
+          <view class='mod-price'>￥{{item.price}}
+            <p class='mod-originprice'>￥{{item.originPrice}}</p>
+          </view>
+          <view class="mod-info">
+            <view class="moinfont">已售{{item.saleNum}}件</view>
+            <!-- <button class='mod-buy' size='mini'>购买课程</button> -->
+            <!-- <view class='mod-buy'></view> -->
+          </view>
+        </view>
+      </navigator>
+    </block>
+  </view>
+</view>
+<!--商城模块end  -->
+
+<!--活动模块  -->
+
+<!--活动模块 end -->

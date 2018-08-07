@@ -1,0 +1,139 @@
+<view class="mine theme">
+  <view class='userInfo'>
+    <open-data type="userAvatarUrl" class="userinfo-avatar"></open-data>
+    <view class='icon'></view>
+    <open-data type="userNickName" class='nickName'></open-data>
+  </view>
+</view>
+
+<view class="g-flex m-od-tab">
+  <navigator url="../order/order?flag=1" class="g-flex-item">
+    <send-message MessageType="3">
+      <view class="iconfont icon-daizhifu i-type"></view>
+      待支付
+    </send-message>
+  </navigator>
+  <navigator url="../order/order?flag=2" class="g-flex-item">
+    <send-message MessageType="3">
+      <view class="iconfont icon-zhifu i-type"></view>
+      待收货
+    </send-message>
+  </navigator>
+  <!-- <view class="g-flex-item"></view> -->
+  <navigator url="../order/order?flag=4" class="g-flex-item">
+    <send-message MessageType="3">
+      <view class="iconfont icon-myiwancheng i-type"></view>
+      已完成
+    </send-message>
+  </navigator>
+  <navigator url="../order/order?flag=0" class="g-flex-item">
+    <send-message MessageType="3">
+      <view class="iconfont icon-quanbudingdan i-type"></view>
+      全部订单
+    </send-message>
+  </navigator>
+
+</view>
+<view class='m-container'>
+  <navigator url='../memberCenter/memberCenter' class='m-item'>
+    <view class='m-item-hd'>
+      <label style='color: #028BF3;' class='iconfont icon-zuanshi'></label>
+    </view>
+    <view class='m-item-bd'>
+      <p>会员中心</p>
+    </view>
+  </navigator>
+  <navigator url='../cashCenter/cashCenter' class='m-item'>
+    <view class='m-item-hd'>
+      <label style='color: #ffc333;' class='iconfont icon-xiaojinku'></label>
+    </view>
+    <view class='m-item-bd'>
+      <p>我的金库</p>
+    </view>
+  </navigator>
+  <navigator url='/pages/goodCollection/goodCollection' class='m-item'>
+    <view class='m-item-hd'>
+      <label style='color: #028BF3;' class='iconfont icon-liwu'></label>
+    </view>
+    <view class='m-item-bd'>
+      <p>商品收藏</p>
+    </view>
+  </navigator>
+  <navigator url='/pages/coupon/coupon' class='m-item'>
+    <view class='m-item-hd'>
+      <label style='color: #1BC2A6;' class='iconfont icon-youhuiquan'></label>
+    </view>
+    <view class='m-item-bd'>
+      <p>优惠券</p>
+    </view>
+  </navigator>
+  <navigator url='/pages/addressList/addressList' class='m-item'>
+    <view class='m-item-hd'>
+      <label style='color: #1BC2A6;' class='iconfont icon-shouhuodizhi'></label>
+    </view>
+    <view class='m-item-bd'>
+      <p>收货地址</p>
+    </view>
+  </navigator>
+  <navigator url='/pages/shopInfo/shopInfo' class='m-item'>
+    <view class='m-item-hd'>
+      <label style='color: #FF0036;' class='iconfont icon-store'></label>
+    </view>
+    <view class='m-item-bd'>
+      <p>关于商家</p>
+    </view>
+  </navigator>
+  <!-- <view class='m-item'>
+    <view class='m-item-hd'>
+      <label style='color: #DB384C;' class='iconfont icon-yonghufankui1'></label>
+    </view>
+    <view class='m-item-bd'>
+      <p>用户反馈</p>
+    </view>
+  </view> -->
+  <navigator url='/pages/agentApply/agentApply' class='m-item'>
+    <view class='m-item-hd'>
+      <label style='color: #DB384C;' class='iconfont icon-jrtd'></label>
+    </view>
+    <view class='m-item-bd'>
+      <p>我要代言</p>
+    </view>
+  </navigator>
+</view>
+
+
+<!-- <view class="weui-cells weui-cells_after-title">
+  <navigator url="/pages/order/order" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+    <view class="weui-cell__bd" style='font-size:16pt;'>我的订单</view>
+    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+  </navigator>
+
+  <navigator url="/pages/integralCenter/integralCenter" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+    <view class="weui-cell__bd" style='font-size:16pt;'>我的积分</view>
+    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+  </navigator>
+  <navigator url="/pages/publishCoolsCar/publishCoolsCar" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+    <view class="weui-cell__bd" style='font-size:16pt;'>我的收藏</view>
+    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+  </navigator>
+</view> -->
+
+<!-- <view class="weui-cells">
+  <navigator url="/pages/about/about" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+    <view class="weui-cell__bd" style='font-size:16pt;'>关于</view>
+    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+  </navigator>
+
+  <button class="weui-cell weui-cell_access button_rebuild weui-cell_active" hover-class="weui-cell_active" open-type='contact'>
+    <view class="weui-cell__bd">联系客服</view>
+    <view class="weui-cell__ft weui-cell__ft_in-access">在线客服</view>
+  </button>
+</view> -->
+
+
+<view class="page__bd page__bd_spacing" style='margin-top:30px;'>
+  <view class="weui-footer">
+    <view class="weui-footer__text">特产微商小程序v1.0</view>
+    <view class="weui-footer__text">Copyright © 2018 故是科技</view>
+  </view>
+</view>

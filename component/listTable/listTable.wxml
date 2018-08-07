@@ -1,0 +1,18 @@
+<!--component/listTable/listTable.wxml-->
+
+<view class="weui-panel weui-panel_access">
+  <!-- <view class="weui-panel__hd">全部</view> -->
+  <view class="weui-panel__bd">
+      <navigator url='/pages/trip/trip?id={{item.id}}&flag=0' wx:for="{{list}}" wx:key="list"  class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+        <view class="imgIcon weui-media-box__hd weui-media-box__hd_in-appmsg">
+          <image class="weui-media-box__thumb" src="{{item.imgUrl}}" mode="aspectFill" />
+        </view>
+        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+          <view class="weui-media-box__title">{{item.title}}</view>
+          <view class="weui-media-box__desc">{{item.startTime}}</view>
+          <view class="weui-media-box__desc">{{item.address}}</view>
+        </view>
+      </navigator>
+   
+  </view>
+</view>

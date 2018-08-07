@@ -1,0 +1,95 @@
+/* component/carousel /carousel .wxss */
+@import "/utils/weui.wxss";
+
+/* .swiper {
+  height: 580rpx;
+  width: 100%;
+ 
+} */
+
+/* .swiper image {
+  height: 380rpx;
+  width: 96%;
+  margin-left: 2%;
+  margin-right: 2%;
+} */
+
+swiper .title {
+  /* width: 500rpx; */
+  padding: 0px 20rpx;
+  display: block;
+  font-size: 9pt;
+  font-weight: bold;
+  line-height: 80rpx;
+  height: 60rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+swiper .text {
+  padding: 10px;
+  display: -webkit-box;
+  font-size: 12pt;
+  color: #000;
+  height: 70rpx;
+  line-height: 45rpx;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+swiper {
+  width: 100%;
+  height: 360rpx;
+}
+
+swiper-item {
+  /* padding-top: 100rpx;  */
+}
+
+swiper .item {
+  width: 600rpx;
+  height: 380rpx;
+  position: absolute;
+  left: 50%;
+  margin-left: -300rpx;
+}
+
+swiper image {
+  width: 100%;
+  height: 300rpx;
+  margin-top: 20px;
+  /* border-radius: 20rpx; */
+  /* margin: 0px 3%; */
+  /* position: absolute;
+  left: 50%;
+  margin-left: -300rpx; *//* border-radius: 20rpx; */
+}
+
+.active {
+  /* transform: rotate(0deg) scale(1.16);
+  transition: all 0.2s ease-in 0s; */
+  animation: kf-marque-animation 0.2s ease-in 0s 1 forwards;
+}
+
+.img_active{
+  /* padding: 0rpx 20rpx; */
+}
+/*设置动画组  */
+@keyframes kf-marque-animation {
+  0%{
+    /* transform: rotate(0deg); */
+     /* transform: scale(1.16)  */
+  }
+  100% {
+    /* transform: scale(1.16); */
+    transform: rotate(0deg);
+    transform: scale(1.16);
+  }
+}
+.active image{
+  /* border-radius:20rpx; */
+}

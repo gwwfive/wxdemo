@@ -1,0 +1,23 @@
+<!--pages/memberLevel/memberLevel.wxml-->
+<view class='level theme'>
+  <view>{{name}}</view>
+  <view class='jindu'>
+    <label>{{start}}</label>
+    <view class='progress'>
+     <view style='width:{{width}}rpx;position:relative;;'><view class='progress-bar' ></view></view>
+      
+    </view>
+    <label>{{end}}</label>
+  </view>
+</view>
+<view style='padding:20rpx;background:#fff;'>会员等级明细</view>
+<view style='padding:30rpx;background:#fff;'>
+  <view class="table">
+    <view class='td'>等级</view>
+    <view class='td'>权益</view>
+   <block wx:for="{{members}}" wx:key="item">
+    <view class='td' style='font-size:12pt;'>{{item.memberName}}({{item.score}}积分)</view>
+    <view class='td' style='font-size:12pt;'>购物享受{{item.discount}}折</view>
+    </block>
+  </view>
+</view>

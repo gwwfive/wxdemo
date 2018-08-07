@@ -1,0 +1,187 @@
+<!--pages/courseDetail/courseDetail.wxml-->
+<import src="../../wxParse/wxParse.wxml" />
+<!--图片展示  -->
+<block wx:if="{{product.carousel.length>0}}">
+  <swiper indicator-dots="{{true}}" autoplay="{{true}}" interval="{{5000}}" duration="{{300}}">
+    <block wx:for="{{product.carousel}}" wx:key="item">
+      <swiper-item>
+        <image src="{{item.picUrl}}" class="carousel-image" />
+      </swiper-item>
+    </block>
+  </swiper>
+</block>
+<block wx:else>
+  <image src="{{product.imgUrl}}" class="carousel-image" />
+</block>
+<!-- 商品详情 -->
+<view class='product-collage'>拼团
+  <label>距离结束仅剩余 {{residueDay}} 天 {{residueHour}} 时 {{residueMin}} 分 {{residueSec}} 秒</label>
+</view>
+<view class="product-info">
+  <view class='product-info-title'>{{product.productName}} {{product.sku.skuName}}</view>
+  <view class='product-info-price'>
+    <label class='product-info-collage'>
+      <p style="margin:10rpx;">{{product.collage.collagePeople}}人拼团价</p>
+    </label>
+    <label style='color:red'>￥
+      <p style="font-size:40rpx;">{{product.collageSku.collagePrice}}</p>
+    </label>
+    <label class='product-info-originprice'>{{product.sku.sellPrice}}</label>
+  </view>
+  <view class='product-saleinfo'>
+    <label>运费：免运费</label>
+    <label>销量：{{product.collageSku.collageNum-product.collageSku.residualNum}}</label>
+    <label>剩余：{{product.collageSku.residualNum}}</label>
+    <!-- <label wx:else>评分：{{product.rate}}</label> -->
+  </view>
+</view>
+<!-- 拼团详情  -->
+<view class='product-collage-info'>
+  <view class='product-collage-info-title'>以下小伙伴正在拼团，点击头像可以直接参与</view>
+  <view class='product-collage-info-joiners'>
+    <scroll-view scroll-x>
+      <view style='width:100%;height:100%;display:flex;'>
+        <block wx:if="{{collager.list.length>0&&collager.dataReady}}">
+          <block wx:for="{{collager.list}}">
+            <view class='joiner'>
+              <image src='{{item.user__avatarUrl||"/img/people.png"}}' bindtap='attendCollage' data-collageskuid="{{item.collageSku_id}}" data-collagerid="{{item.id}}"></image>
+            </view>
+          </block>
+        </block>
+        <block wx:if="{{collager.list.length==0&&collager.dataReady}}">
+          <view class='joiner'>
+            暂时还没有小伙伴
+          </view>
+        </block>
+
+      </view>
+    </scroll-view>
+  </view>
+</view>
+<!-- 商品简介和评论  -->
+<view class="weui-tab">
+  <view class="weui-navbar">
+    <block wx:for="{{tabs}}" wx:key="*this">
+      <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+        <view class="weui-navbar__title">{{item}}</view>
+      </view>
+    </block>
+    <view class="weui-navbar__slider" style="width:{{sliderWidth}}px;left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+  </view>
+  <view class="weui-tab__panel">
+    <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
+      <view class='product-detail-bar'>
+        <view bindtap='chooseInfo' data-index='0' class='product-detail-bar-item {{productInfoIndex==0?"active":""}}'>介绍</view>
+        <view bindtap='chooseInfo' data-index='1' class='product-detail-bar-item {{productInfoIndex==1?"active":""}}'>规格</view>
+        <view bindtap='chooseInfo' data-index='2' class='product-detail-bar-item {{productInfoIndex==2?"active":""}}'>售后</view>
+      </view>
+      <view class="product-intruduce ql-container" hidden='{{productInfoIndex!=0}}'>
+        <view class='ql-editor'>
+          <template is="wxParse" data="{{wxParseData:introduce.nodes}}" />
+        </view>
+        <!-- 这一块是富文本 显示的内容区 -->
+
+      </view>
+      <view class='product-format' hidden='{{productInfoIndex!=1}}'>
+        <view class='product-format-table'>
+          <block wx:for='{{product.format}}' wx:key="item">
+            <view class='td'>{{item.formatName}}</view>
+            <view class='td'>{{item.formatValue}}</view>
+          </block>
+        </view>
+      </view>
+      <view class='product-shouhou' hidden='{{productInfoIndex!=2}}'>
+        <text>1.如卖家收到货后发现货有质量问题可以联系商家协商退款或重新发货</text>
+        <text>2.买家确认收货后将无法退货或退款</text>
+        <text>3.我们的产品健康无公害，欢迎大家推荐购买，推荐有奖哦~</text>
+      </view>
+    </view>
+  </view>
+</view>
+<!--购买须知  -->
+<view class='content-bg'>
+  <view class='con-title'>
+    <!-- <image class='con-title_icon' src='/img/doubt.png'></image> -->
+    <view class='con-title_name'>购买须知</view>
+  </view>
+  <view class='con-content'>
+
+    <text>1、生鲜食品为了不影响您的食用，收到请尽快食用
+          2、购买成功后，我们会尽快发货
+          3、不支持退款，请谨慎购买
+        </text>
+  </view>
+</view>
+<view style='padding:48px;'></view>
+<!--底栏  -->
+<view class='detail-nav '>
+  <view class='weui-flex'>
+    <view bindtap='attend' class='weui-flex__item weui-flex'>
+      <!-- <view class='weui-flex__item btn-mini'>
+        <image class='con-title_icon' src='/img/shareMini.png'></image>
+        <view style='margin-top:2px;'>分享</view>
+      </view> -->
+      <view class='weui-flex__item btn-mini' style='position:relative;'>
+        <image class='con-title_icon' src='/img/share.png'></image>
+        <button class='con-title_icon' style='position:absolute;opacity:0;' open-type='share'></button>
+        <!-- <view style='margin-top:2px;'>分享</view> -->
+      </view>
+      <!-- <view class='weui-flex__item btn-mini'>
+        <image class='con-title_icon' src='/img/phoneCall.png'></image>
+        <view style='margin-top:2px;'>电话咨询</view>
+      </view> -->
+    </view>
+    <view bindtap='showPopup' class='weui-flex__item'>
+      <button class='btn-buy'>单买</button>
+    </view>
+    <view bindtap='showCollagePopup' class='weui-flex__item'>
+      <button class='btn-more'>发起拼团</button>
+    </view>
+  </view>
+</view>
+
+<!-- 弹出sku窗 拼团的  -->
+<view class='mask' hidden='{{!showCollageMask}}' catchtap='hideCollagePopup'>
+  <view class='popup'>
+    <view class='popup-product'>
+      <image src='{{product.imgUrl}}'></image>
+      <view>
+        <view class='popup-product-name'>{{product.productName}}</view>
+        <view class='popup-product-sale'>
+          <label style='color:red;'>￥{{product.collageSku.collagePrice}}</label>
+          <label style='margin-left:200rpx;color:#999'>剩余{{product.collageSku.residualNum}}</label>
+        </view>
+      </view>
+    </view>
+    <view class='popup-skus'>
+      <view class='popup-sku active'>{{product.sku.skuName}}</view>
+      <!-- <view class='popup-sku'>500g罐装龙眼干</view> -->
+    </view>
+    <view class='popup-bar'>
+      <button bindtap='goToPayForStartCollage'>立即开团</button>
+    </view>
+  </view>
+</view>
+<!-- 单买的 -->
+<view class='mask' hidden='{{!showMask}}' catchtap='hidePopup'>
+  <view class='popup'>
+    <view class='popup-product'>
+      <image src='{{product.imgUrl}}'></image>
+      <view>
+        <view class='popup-product-name'>{{product.productName}}</view>
+        <view class='popup-product-sale'>
+          <label style='color:red;'>￥{{product.sku.sellPrice}}</label>
+          <label style='margin-left:200rpx;color:#999'>剩余{{product.sku.residualNum}}件</label>
+        </view>
+      </view>
+    </view>
+    <view class='popup-skus'>
+      <view class='popup-sku active'>{{product.sku.skuName}}</view>
+      <!-- <view class='popup-sku'>500g罐装龙眼干</view> -->
+    </view>
+    <view class='popup-bar'>
+      <button bindtap='payNow'>立即支付</button>
+      <button bindtap='addToCart'>加入购物车</button>
+    </view>
+  </view>
+</view>

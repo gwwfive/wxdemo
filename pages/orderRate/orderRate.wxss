@@ -1,0 +1,66 @@
+/* pages/orderRate/orderRate.wxss */
+page{
+  background: #eee;
+}
+.rate-product{
+  width: 100%;
+  padding: 30rpx;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-bottom:1rpx solid #eee;
+}
+.rate-product .product-img{
+  width: 150rpx;
+  height: 150rpx;
+}
+.product-rate{
+  height: 60rpx;
+  margin-left: 20rpx;
+}
+.product-rate image{
+width: 60rpx;
+height: 60rpx;
+/* vertical-align: middle; */
+}
+.rate-content{
+  /* height: 300rpx; */
+  width: 100%;
+  background: #fff;
+}
+.rate-media{
+  background: #fff;
+}
+.niming{
+  padding: 30rpx;
+  background: #fff;
+  display: flex;
+  align-items: center;
+}
+.niming image{
+   width: 50rpx;
+  height: 50rpx;
+}
+.niming label{
+ height: 50rpx;
+ line-height: 50rpx;
+ margin-left: 20rpx;
+}
+.niming .noselect{
+  width: 50rpx;
+  height: 50rpx;
+  border:1rpx solid #ddd;
+  border-radius: 50%;
+}
+.rate-bar{
+  color: #fff;
+  background: #ff0036;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  position: fixed;
+  top: auto;
+  bottom: 0rpx;
+  left: 0rpx;
+  width: 100%;
+}

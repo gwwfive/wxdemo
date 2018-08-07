@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "searchBar": "/component/searchBar/searchBar"
+  },
+  "backgroundTextStyle": "dark",
+  "navigationBarTitleText": "分类"
+}

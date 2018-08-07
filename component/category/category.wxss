@@ -1,0 +1,7 @@
+/* component/category/category.wxss */
+.title{
+  margin-top: 63px;
+  font-size: 18pt;
+  margin-left: 15px;
+  font-weight: bold;
+}

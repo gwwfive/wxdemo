@@ -1,0 +1,123 @@
+<block wx:if="{{list.length>0&&dataReady}}">
+  <block wx:for="{{list}}" wx:key="item">
+    <view class="stamp stamp01" wx:if="{{item.couponType==0}}">
+      <view class='left'></view>
+      <view class="par">
+        <view style='color:#fff;'>满减券</view>
+        <p class="sign sub">￥</p>
+        <span>{{item.reduceAmount}}</span>
+        <p class="sign sub">优惠券</p>
+        <view>订单满{{item.fullAmount}}元，减{{item.reduceAmount}}元</view>
+      </view>
+      <view class="copy">
+        <view>有效期</view>
+        <block wx:if="{{item.timeType==0}}">
+          <view style='font-size:25rpx;'>{{item.startTime}}</view>
+          <view style='height:20rpx;line-height:20rpx;'>-</view>
+          <view style='font-size:25rpx;'>{{item.endTime}}</view>
+        </block>
+        <block wx:elif="{{item.timeType==1}}">
+          <view>每周{{item.perWeekDay}}当日有效</view>
+        </block>
+        <block wx:elif="{{item.timeType==2}}">
+          <view>每月{{item.perMonthDay}}号当日有效</view>
+        </block>
+        <block wx:if="{{item.hasReceive}}">
+          <button size='mini' data-index="{{index}}" disabled='{{true}}'>已领取</button>
+        </block>
+        <block wx:else>
+          <block wx:if="{{item.couponResNum==0}}">
+            <button size='mini' data-index="{{index}}" disabled='{{true}}'>余量不足</button>
+          </block>
+          <block wx:else>
+            <button size='mini' data-index="{{index}}" bindtap='goTorecieve' disabled='{{item.hasReceive}}'>立即领取</button>
+          </block>
+        </block>
+      </view>
+      <view class='right'></view>
+      <!-- <i></i> -->
+      <view class='i'></view>
+    </view>
+    <view class="stamp stamp02" wx:elif="{{item.couponType==1}}">
+      <view class='left'></view>
+      <view class="par">
+        <view style='color:#fff;'>立减券</view>
+        <p class="sign sub">￥</p>
+        <span>{{item.onceAmount}}</span>
+        <p class="sign sub">优惠券</p>
+        <view>下单立减</view>
+      </view>
+      <view class="copy">
+        <view>有效期</view>
+        <block wx:if="{{item.timeType==0}}">
+          <view style='font-size:25rpx;'>{{item.startTime}}</view>
+          <view style='height:20rpx;line-height:20rpx;'>-</view>
+          <view style='font-size:25rpx;'>{{item.endTime}}</view>
+        </block>
+        <block wx:elif="{{item.timeType==1}}">
+          <view>每周{{item.perWeekDay}}当日有效</view>
+        </block>
+        <block wx:elif="{{item.timeType==2}}">
+          <view>每月{{item.perMonthDay}}号当日有效</view>
+        </block>
+        <block wx:if="{{item.hasReceive}}">
+          <button size='mini' data-index="{{index}}" disabled='{{true}}'>已领取</button>
+        </block>
+        <block wx:else>
+          <block wx:if="{{item.couponResNum==0}}">
+            <button size='mini' data-index="{{index}}" disabled='{{true}}'>余量不足</button>
+          </block>
+          <block wx:else>
+            <button size='mini' data-index="{{index}}" bindtap='goTorecieve' disabled='{{item.hasReceive}}'>立即领取</button>
+          </block>
+        </block>
+      </view>
+      <view class='right'></view>
+      <view class='i'></view>
+      <!-- <i></i> -->
+    </view>
+    <view class="stamp stamp03" wx:elif="{{item.couponType==2}}">
+      <view class='left'></view>
+      <view class="par">
+        <view style='color:#fff;'>折扣券</view>
+        <span>{{item.discount}}</span>
+        <p class="sign sub">折</p>
+        <p class="sign sub">优惠券</p>
+        <view style='font-size:25rpx;'>下单享受{{item.discount}}折,最高减{{item.disCountUpLimit}}元</view>
+      </view>
+      <view class="copy">
+        <view>有效期</view>
+        <block wx:if="{{item.timeType==0}}">
+          <view style='font-size:25rpx;'>{{item.startTime}}</view>
+          <view style='height:20rpx;line-height:20rpx;'>-</view>
+          <view style='font-size:25rpx;'>{{item.endTime}}</view>
+        </block>
+        <block wx:elif="{{item.timeType==1}}">
+          <view>每周{{item.perWeekDay}}当日有效</view>
+        </block>
+        <block wx:elif="{{item.timeType==2}}">
+          <view>每月{{item.perMonthDay}}号当日有效</view>
+        </block>
+        <block wx:if="{{item.hasReceive}}">
+          <button size='mini' data-index="{{index}}" disabled='{{true}}'>已领取</button>
+        </block>
+        <block wx:else>
+          <block wx:if="{{item.couponResNum==0}}">
+            <button size='mini' data-index="{{index}}" disabled='{{true}}'>余量不足</button>
+          </block>
+          <block wx:else>
+            <button size='mini' data-index="{{index}}" bindtap='goTorecieve' disabled='{{item.hasReceive}}'>立即领取</button>
+          </block>
+        </block>
+      </view>
+      <view class='right'></view>
+      <view class='i'></view>
+      <!-- <i></i> -->
+    </view>
+  </block>
+</block>
+<block wx:if='{{dataReady&&list.length==0}}'>
+  <view class='noCoupon'>
+    <image src="/img/order_all_empty.png"></image>
+  </view>
+</block>

@@ -1,0 +1,18 @@
+<!--component/listBlock/listBlock.wxml-->
+<view class="listBlock">
+    <navigator url='/pages/curriculum/curriculum?id={{item.id}}' class="list__item" wx:for="{{list}}" wx:key="list">
+      <image class='list__img' src='{{item.imgUrl}}'></image>
+      <view>
+        <view class="list__title">{{item.name}}</view>
+        <view class="weui-flex">
+          <view class="weui-flex__item weui-flex" style='justify-content:flex-start;align-items:center;'>
+            <image class="" src='/images/user.png' style='width:12px;height:12px;padding-bottom:3px;padding-right:5px;'></image>
+            <text class="" style='font-size:12px;color:#888888;'>{{item.buyNum}}</text>
+          </view>
+          <!-- <view> 
+            <image class="weui-flex__item" src='/images/share_fill.png' style='width:14px;height:14px;'></image>
+          </view> -->
+        </view>
+      </view>
+    </navigator>
+</view>

@@ -1,0 +1,16 @@
+<!--pages/scoreRecord/scoreRecord.wxml-->
+<view class='score theme'>
+  <view>{{score}}
+    <label>分</label>
+  </view>
+</view>
+<view class="title">积分明细</view>
+<block wx:for="{{list}}" wx:key="item">
+<view class='cell'>
+  <view>
+    <view class='item'>{{item.even}}</view>
+    <view class='item'>{{item.createTime}}</view>
+  </view>
+  <view class='item' style='margin-right:0rpx;margin-left:auto'>+{{item.value}}</view>
+</view>
+</block>

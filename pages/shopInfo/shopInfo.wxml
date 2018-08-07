@@ -1,0 +1,5 @@
+<!--pages/shopInfo/shopInfo.wxml-->
+<import src="../../wxParse/wxParse.wxml" />
+<view style='height:100%;width:100%;' class='ql-editor'>
+<template is="wxParse" data="{{wxParseData:content.nodes}}" />
+</view>

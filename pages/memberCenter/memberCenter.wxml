@@ -1,0 +1,46 @@
+<!--pages/memberCenter/memberCenter.wxml-->
+<view class='member theme'>
+  <view class='member-name'>{{member.memberName||'普通会员'}}</view>
+  <view class='member-detail'>
+    <view class='member-detail-item' style='border-right:1rpx solid #fff;' bindtap='goToMemberLevel'>
+      <view>v{{member.level}}</view>
+      <view>等级</view>
+    </view>
+    <view class='member-detail-item' bindtap='goToScoreRecord'>
+      <view>{{score}}</view>
+      <view>积分</view>
+    </view>
+  </view>
+</view>
+<view style='padding:20rpx;background:#fff'>
+  <view class='app-title'>会员权益</view>
+</view>
+
+<view class='member-quanyi'>
+  <block wx:if="{{member.discount==10}}">
+    没有优惠,去赚取积分升级等级吧
+  </block>
+  <block wx:else>
+    购物享受{{member.discount}}折优惠
+  </block>
+
+</view>
+
+<view style='margin-top:30rpx;padding:20rpx;background:#fff'>
+  <view class='app-title'>任务中心</view>
+</view>
+<view class='member-cell'>
+  <image src='/img/sign.png'></image>
+  <label>签到领积分</label>
+  <button size='mini' disabled='{{isSign}}' bindtap='signDay'>签到</button>
+</view>
+<view class='member-cell'>
+  <image src='/img/shop.png'></image>
+  <label>购物领积分</label>
+  <button size='mini' bindtap='goToBuy'>去购物</button>
+</view>
+<view class='member-cell'>
+  <image src='/img/edit.png'></image>
+  <label>评价领积分</label>
+  <button size='mini' bindtap='goToComment'>去评价</button>
+</view>
